@@ -2,6 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 
 import Duration from "./Duration";
+import Begin from "./Begin";
 
 const { Content } = Layout;
 
@@ -17,7 +18,8 @@ export default () => {
         alignItems: "center"
       }}
     >
-      <Duration />
+      {/* <Duration /> */}
+      <Begin />
     </Content>
   );
 };
