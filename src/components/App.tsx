@@ -1,11 +1,15 @@
 import React from "react";
-import { Button } from "antd";
+import { Layout } from "antd";
+
+import Content from "./Content";
+import Footer from "./Footer";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Button type="primary">Button</Button>
-    </div>
+    <Layout style={{ height: "100vh" }}>
+      <Content />
+      <Footer />
+    </Layout>
   );
 };
 
