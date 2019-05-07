@@ -3,6 +3,7 @@ import { Layout } from "antd";
 
 import Duration from "./Duration";
 import Begin from "./Begin";
+import Main from "./Main";
 
 const { Content } = Layout;
 
@@ -19,7 +20,8 @@ export default () => {
       }}
     >
       {/* <Duration /> */}
-      <Begin />
+      {/* <Begin /> */}
+      <Main />
     </Content>
   );
 };
