@@ -1,14 +1,15 @@
 import React from "react";
+import { StyleSheet, css } from "aphrodite";
 import { Layout, Icon } from "antd";
 
 const { Footer } = Layout;
 
 export default () => {
   return (
-    <Footer style={{ backgroundColor: "white", textAlign: "center" }}>
+    <Footer className={css(styles.footer)}>
       <a
         href="https://github.com/iwgx/downtown"
-        style={{ color: "inherit" }}
+        className={css(styles.link)}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -17,3 +18,13 @@ export default () => {
     </Footer>
   );
 };
+
+const styles = StyleSheet.create({
+  footer: {
+    backgroundColor: "white",
+    textAlign: "center"
+  },
+  link: {
+    color: "inherit"
+  }
+});

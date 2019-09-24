@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "http://iwgx.github.io/downtown",
   "dependencies": {
+    "@types/aphrodite": "^0.5.13",
     "@types/jest": "24.0.12",
     "@types/node": "12.0.0",
     "@types/react": "16.8.16",
     "@types/react-dom": "16.8.4",
     "antd": "^3.17.0",
+    "aphrodite": "^2.4.0",
     "babel-plugin-import": "^1.11.0",
     "customize-cra": "^0.2.12",
     "moment": "^2.24.0",
@@ -23,7 +25,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
