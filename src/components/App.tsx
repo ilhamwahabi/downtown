@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite";
 import { Layout } from "antd";
 
-import Content from "./Content";
+import Section from "./section";
 import Footer from "./Footer";
 
 const App: React.FC = () => {
   return (
     <Layout className={css(styles.layout)}>
-      <Content />
+      <Section />
       <Footer />
     </Layout>
   );

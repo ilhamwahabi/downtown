@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite";
 import { Layout } from "antd";
 
-import Main from "./Main";
+import Main from "./inputTime";
 
 const { Content } = Layout;
 
