@@ -1,23 +1,100 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
+import { useTimeInputReducer, ETimeActionType } from "../../reducers/timeInput";
+
 const TimeInput = () => {
+  const [state, dispatch] = useTimeInputReducer();
+
+  const renderHourSection = () => (
+    <div className={css(styles.inputContainer)}>
+      <input
+        autoFocus
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_HOUR_FIRST_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.hour[0]}
+      />
+      <input
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_HOUR_SECOND_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.hour[1]}
+      />
+    </div>
+  );
+
+  const renderMinuteSection = () => (
+    <div className={css(styles.inputContainer)}>
+      <input
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_MINUTE_FIRST_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.minute[0]}
+      />
+      <input
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_MINUTE_SECOND_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.minute[1]}
+      />
+    </div>
+  );
+
+  const renderSecondSection = () => (
+    <div className={css(styles.inputContainer)}>
+      <input
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_SECOND_FIRST_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.second[0]}
+      />
+      <input
+        className={css(styles.input)}
+        type="text"
+        onChange={event =>
+          dispatch({
+            type: ETimeActionType.CHANGE_SECOND_SECOND_DIGIT,
+            payload: event.target.value
+          })
+        }
+        value={state.second[1]}
+      />
+    </div>
+  );
+
   return (
     <div className={css(styles.container)}>
-      <div className={css(styles.inputContainer)}>
-        <input className={css(styles.input)} type="text" />
-        <input className={css(styles.input)} type="text" />
-      </div>
+      {renderHourSection()}
       <span className={css(styles.separator)}>:</span>
-      <div className={css(styles.inputContainer)}>
-        <input className={css(styles.input)} type="text" />
-        <input className={css(styles.input)} type="text" />
-      </div>
+      {renderMinuteSection()}
       <span className={css(styles.separator)}>:</span>
-      <div className={css(styles.inputContainer)}>
-        <input className={css(styles.input)} type="text" />
-        <input className={css(styles.input)} type="text" />
-      </div>
+      {renderSecondSection()}
     </div>
   );
 };
