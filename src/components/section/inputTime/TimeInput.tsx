@@ -6,85 +6,38 @@ import { useTimeInputReducer, ETimeActionType } from "../../reducers/timeInput";
 const TimeInput = () => {
   const [state, dispatch] = useTimeInputReducer();
 
+  const renderInput = (initValue: string, dispatchType: ETimeActionType) => (
+    <input
+      className={css(styles.input)}
+      type="text"
+      onChange={event =>
+        dispatch({
+          type: dispatchType,
+          payload: event.target.value
+        })
+      }
+      value={initValue}
+    />
+  );
+
   const renderHourSection = () => (
     <div className={css(styles.inputContainer)}>
-      <input
-        autoFocus
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_HOUR_FIRST_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.hour[0]}
-      />
-      <input
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_HOUR_SECOND_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.hour[1]}
-      />
+      {renderInput(state.hour[0], ETimeActionType.CHANGE_HOUR_FIRST_DIGIT)}
+      {renderInput(state.hour[1], ETimeActionType.CHANGE_HOUR_SECOND_DIGIT)}
     </div>
   );
 
   const renderMinuteSection = () => (
     <div className={css(styles.inputContainer)}>
-      <input
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_MINUTE_FIRST_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.minute[0]}
-      />
-      <input
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_MINUTE_SECOND_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.minute[1]}
-      />
+      {renderInput(state.minute[0], ETimeActionType.CHANGE_MINUTE_FIRST_DIGIT)}
+      {renderInput(state.minute[1], ETimeActionType.CHANGE_MINUTE_SECOND_DIGIT)}
     </div>
   );
 
   const renderSecondSection = () => (
     <div className={css(styles.inputContainer)}>
-      <input
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_SECOND_FIRST_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.second[0]}
-      />
-      <input
-        className={css(styles.input)}
-        type="text"
-        onChange={event =>
-          dispatch({
-            type: ETimeActionType.CHANGE_SECOND_SECOND_DIGIT,
-            payload: event.target.value
-          })
-        }
-        value={state.second[1]}
-      />
+      {renderInput(state.second[0], ETimeActionType.CHANGE_SECOND_FIRST_DIGIT)}
+      {renderInput(state.second[1], ETimeActionType.CHANGE_SECOND_SECOND_DIGIT)}
     </div>
   );
 
