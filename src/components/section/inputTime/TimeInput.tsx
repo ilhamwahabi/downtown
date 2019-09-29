@@ -31,10 +31,6 @@ const TimeInput = () => {
     />
   );
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   const renderHourSection = () => (
     <div className={css(styles.inputContainer)}>
       {renderInput(state.hour[0], ETimeActionType.CHANGE_HOUR_FIRST_DIGIT)}
@@ -57,18 +53,13 @@ const TimeInput = () => {
   );
 
   return (
-    <form onSubmit={handleFormSubmit} className={css(styles.container)}>
-      <div className={css(styles.inputsContainer)}>
-        {renderHourSection()}
-        <span className={css(styles.separator)}>:</span>
-        {renderMinuteSection()}
-        <span className={css(styles.separator)}>:</span>
-        {renderSecondSection()}
-      </div>
-      <div className={css(styles.buttonContainer)}>
-        <button className={css(styles.button)}>Start</button>
-      </div>
-    </form>
+    <div className={css(styles.inputsContainer)}>
+      {renderHourSection()}
+      <span className={css(styles.separator)}>:</span>
+      {renderMinuteSection()}
+      <span className={css(styles.separator)}>:</span>
+      {renderSecondSection()}
+    </div>
   );
 };
 
@@ -99,20 +90,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#263238",
     outline: "none"
-  },
-  buttonContainer: {
-    textAlign: "center"
-  },
-  button: {
-    backgroundColor: "#0091EA",
-    color: "white",
-    borderRadius: 5,
-    border: "none",
-    padding: "0 15px",
-    height: 40,
-    width: 100,
-    marginTop: 75,
-    cursor: "pointer"
   }
 });
 
