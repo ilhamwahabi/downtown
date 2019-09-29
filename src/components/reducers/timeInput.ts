@@ -21,15 +21,11 @@ export interface ITimeAction {
 }
 
 export const reducers = (state: ITimeState, action: ITimeAction) => {
-  console.log({ state, action });
-
   switch (action.type) {
     case ETimeActionType.CHANGE_HOUR_FIRST_DIGIT:
       const updatedState = { ...state };
       if (parseInt(action.payload) <= 2)
         updatedState.hour = `${action.payload}${updatedState.hour[1]}`;
-
-      console.log({ updatedState });
 
       return updatedState;
     case ETimeActionType.CHANGE_HOUR_SECOND_DIGIT: {

@@ -7,7 +7,6 @@ const Main = () => {
   return (
     <>
       <TimeInput />
-      <StartButton />
     </>
   );
 };
