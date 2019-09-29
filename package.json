@@ -2,7 +2,7 @@
   "name": "downtown",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://iwgx.github.io/downtown",
+  "homepage": "https://iwgx.github.io/downtown",
   "dependencies": {
     "@types/aphrodite": "^0.5.13",
     "@types/jest": "24.0.12",
