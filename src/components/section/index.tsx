@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
-import { Layout } from "antd";
 
 import Main from "./inputTime";
 
-const { Content } = Layout;
-
 export default () => {
   return (
-    <Content className={css(styles.content)}>
+    <section className={css(styles.content)}>
       <Main />
-    </Content>
+    </section>
   );
 };
 

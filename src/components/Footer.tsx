@@ -27,14 +27,18 @@ const styles = StyleSheet.create({
     padding: "24px 50px"
   },
   link: {
-    color: "inherit",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    textDecoration: "none",
+    outline: "none",
+    cursor: "pointer",
+    color: "rgba(0,0,0,.65)",
+    fontSize: 14
   },
   copyrightSvgIcon: {
-    width: 15,
-    height: 15,
+    width: 14,
+    height: 14,
     fill: "rgba(0, 0, 0, 0.75)",
     margin: "0 2.5px",
     paddingBottom: 1
