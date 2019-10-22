@@ -20,7 +20,7 @@ export interface ITimeAction {
   payload: string;
 }
 
-export const reducers = (state: ITimeState, action: ITimeAction) => {
+export const timeInputReducers = (state: ITimeState, action: ITimeAction) => {
   switch (action.type) {
     case ETimeActionType.CHANGE_HOUR_FIRST_DIGIT:
       return { ...state, hour: `${action.payload}${state.hour[1]}` };
@@ -44,10 +44,11 @@ export const reducers = (state: ITimeState, action: ITimeAction) => {
   }
 };
 
-export const initialState: ITimeState = {
+export const initialTimeInput: ITimeState = {
   hour: "00",
   minute: "00",
   second: "00"
 };
 
-export const useTimeInputReducer = () => useReducer(reducers, initialState);
+export const useTimeInputReducer = () =>
+  useReducer(timeInputReducers, initialTimeInput);

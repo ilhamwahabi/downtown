@@ -2,13 +2,19 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import InputTime from "./InputTime";
+import { useContextReducer } from "../../../context";
 
 export default () => {
-  return (
-    <main className={css(styles.content)}>
-      <InputTime />
-    </main>
-  );
+  const {
+    stage: [stage]
+  } = useContextReducer();
+
+  const renderSection = () => {
+    if (stage === "input") return <InputTime />;
+    if (stage === "count") return <p>count</p>;
+  };
+
+  return <main className={css(styles.content)}>{renderSection()}</main>;
 };
 
 const styles = StyleSheet.create({

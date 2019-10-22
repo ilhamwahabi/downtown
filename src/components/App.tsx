@@ -3,13 +3,16 @@ import { StyleSheet, css } from "aphrodite";
 
 import Main from "./page/Main";
 import Footer from "./page/Footer";
+import { ContextProvider } from "../context";
 
 const App: React.FC = () => {
   return (
-    <main className={css(styles.layout)}>
-      <Main />
-      <Footer />
-    </main>
+    <ContextProvider>
+      <main className={css(styles.layout)}>
+        <Main />
+        <Footer />
+      </main>
+    </ContextProvider>
   );
 };
 

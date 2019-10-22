@@ -2,7 +2,7 @@ import { useReducer } from "react";
 
 export type TStageState = "input" | "count";
 
-export const initialState: TStageState = "input";
+export const initialStage: TStageState = "input";
 
 export enum EStageActionType {
   "TO_INPUT_STAGE",
@@ -13,7 +13,7 @@ export interface IStageAction {
   type: EStageActionType;
 }
 
-export const reducers = (state: TStageState, action: IStageAction) => {
+export const stageReducers = (state: TStageState, action: IStageAction) => {
   switch (action.type) {
     case EStageActionType.TO_INPUT_STAGE:
       return "input";
@@ -24,4 +24,4 @@ export const reducers = (state: TStageState, action: IStageAction) => {
   }
 };
 
-export const useStageReducer = () => useReducer(reducers, initialState);
+export const useStageReducer = () => useReducer(stageReducers, initialStage);

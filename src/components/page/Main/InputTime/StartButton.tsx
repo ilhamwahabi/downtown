@@ -1,10 +1,23 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
+import { useContextReducer } from "../../../../context";
+import { EStageActionType } from "../../../../reducers/stage";
+
 const StartButton = () => {
+  const {
+    stage: [, stageDispatch]
+  } = useContextReducer();
+
+  const actionStageToCount = () => {
+    stageDispatch({ type: EStageActionType.TO_COUNT_STAGE });
+  };
+
   return (
     <div className={css(styles.buttonContainer)}>
-      <button className={css(styles.button)}>Start</button>
+      <button className={css(styles.button)} onClick={actionStageToCount}>
+        Start
+      </button>
     </div>
   );
 };
