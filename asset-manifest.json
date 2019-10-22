@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/downtown/static/css/main.fafdc965.chunk.css",
-    "main.js": "/downtown/static/js/main.805c280a.chunk.js",
-    "main.js.map": "/downtown/static/js/main.805c280a.chunk.js.map",
+    "main.js": "/downtown/static/js/main.968bc93f.chunk.js",
+    "main.js.map": "/downtown/static/js/main.968bc93f.chunk.js.map",
     "runtime~main.js": "/downtown/static/js/runtime~main.dc0c3d3a.js",
     "runtime~main.js.map": "/downtown/static/js/runtime~main.dc0c3d3a.js.map",
     "static/js/2.76d37129.chunk.js": "/downtown/static/js/2.76d37129.chunk.js",
     "static/js/2.76d37129.chunk.js.map": "/downtown/static/js/2.76d37129.chunk.js.map",
     "index.html": "/downtown/index.html",
-    "precache-manifest.ac62c45ac3abc5a57e8c24c64933cc4f.js": "/downtown/precache-manifest.ac62c45ac3abc5a57e8c24c64933cc4f.js",
+    "precache-manifest.fb6d072ad0b4eaea2949d5fa9f1ece9a.js": "/downtown/precache-manifest.fb6d072ad0b4eaea2949d5fa9f1ece9a.js",
     "service-worker.js": "/downtown/service-worker.js",
     "static/css/main.fafdc965.chunk.css.map": "/downtown/static/css/main.fafdc965.chunk.css.map",
     "static/media/copyright.0d29c5c5.svg": "/downtown/static/media/copyright.0d29c5c5.svg"
