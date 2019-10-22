@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 75,
     border: "1px solid #607D8B",
-    borderRadius: 10,
+    borderRadius: 5,
     fontSize: 75,
     textAlign: "center",
     color: "#263238",

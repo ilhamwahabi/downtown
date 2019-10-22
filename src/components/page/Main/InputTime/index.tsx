@@ -4,7 +4,7 @@ import { StyleSheet, css } from "aphrodite";
 import TimeInput from "./TimeInput";
 import StartButton from "./StartButton";
 
-const Main = () => {
+const InputTime = () => {
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Main;
+export default InputTime;
