@@ -37,9 +37,15 @@ const styles = StyleSheet.create({
     marginTop: 75,
     cursor: "pointer",
     fontSize: 16,
+    outline: "none",
     transition: "color .25s, background-color .25s",
 
     ":hover": {
+      backgroundColor: "black",
+      color: "white"
+    },
+
+    ":focus": {
       backgroundColor: "black",
       color: "white"
     }
