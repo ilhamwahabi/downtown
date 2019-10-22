@@ -27,16 +27,22 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   button: {
-    backgroundColor: "#0091EA",
-    color: "white",
+    backgroundColor: "white",
+    color: "black",
     borderRadius: 2.5,
-    border: "none",
+    border: "1px solid black",
     padding: "0 15px",
     height: 40,
     width: 100,
     marginTop: 75,
     cursor: "pointer",
-    fontSize: 16
+    fontSize: 16,
+    transition: "color .25s, background-color .25s",
+
+    ":hover": {
+      backgroundColor: "black",
+      color: "white"
+    }
   }
 });
 
