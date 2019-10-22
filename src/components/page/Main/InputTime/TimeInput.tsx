@@ -9,7 +9,11 @@ import {
 const TimeInput = () => {
   const [state, dispatch] = useTimeInputReducer();
 
-  const renderInput = (initValue: string, dispatchType: ETimeActionType) => (
+  const renderInput = (
+    initValue: string,
+    dispatchType: ETimeActionType,
+    maxValue: number
+  ) => (
     <input
       className={css(styles.input)}
       type="text"
@@ -25,43 +29,62 @@ const TimeInput = () => {
         nextInput.focus();
       }}
       onChange={event => {
+        const { value } = event.target;
+
+        if (parseInt(value) > maxValue) return;
         dispatch({
           type: dispatchType,
-          payload: event.target.value
+          payload: value
         });
       }}
       value={initValue}
     />
   );
 
-  const renderHourSection = () => (
+  const renderHourInput = () => (
     <div className={css(styles.inputContainer)}>
-      {renderInput(state.hour[0], ETimeActionType.CHANGE_HOUR_FIRST_DIGIT)}
-      {renderInput(state.hour[1], ETimeActionType.CHANGE_HOUR_SECOND_DIGIT)}
+      {renderInput(state.hour[0], ETimeActionType.CHANGE_HOUR_FIRST_DIGIT, 2)}
+      {renderInput(state.hour[1], ETimeActionType.CHANGE_HOUR_SECOND_DIGIT, 3)}
     </div>
   );
 
-  const renderMinuteSection = () => (
+  const renderMinuteInput = () => (
     <div className={css(styles.inputContainer)}>
-      {renderInput(state.minute[0], ETimeActionType.CHANGE_MINUTE_FIRST_DIGIT)}
-      {renderInput(state.minute[1], ETimeActionType.CHANGE_MINUTE_SECOND_DIGIT)}
+      {renderInput(
+        state.minute[0],
+        ETimeActionType.CHANGE_MINUTE_FIRST_DIGIT,
+        5
+      )}
+      {renderInput(
+        state.minute[1],
+        ETimeActionType.CHANGE_MINUTE_SECOND_DIGIT,
+        9
+      )}
     </div>
   );
 
-  const renderSecondSection = () => (
+  const renderSecondInput = () => (
     <div className={css(styles.inputContainer)}>
-      {renderInput(state.second[0], ETimeActionType.CHANGE_SECOND_FIRST_DIGIT)}
-      {renderInput(state.second[1], ETimeActionType.CHANGE_SECOND_SECOND_DIGIT)}
+      {renderInput(
+        state.second[0],
+        ETimeActionType.CHANGE_SECOND_FIRST_DIGIT,
+        5
+      )}
+      {renderInput(
+        state.second[1],
+        ETimeActionType.CHANGE_SECOND_SECOND_DIGIT,
+        9
+      )}
     </div>
   );
 
   return (
     <div className={css(styles.inputsContainer)}>
-      {renderHourSection()}
+      {renderHourInput()}
       <span className={css(styles.separator)}>:</span>
-      {renderMinuteSection()}
+      {renderMinuteInput()}
       <span className={css(styles.separator)}>:</span>
-      {renderSecondSection()}
+      {renderSecondInput()}
     </div>
   );
 };
