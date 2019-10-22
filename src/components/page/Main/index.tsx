@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import InputTime from "./InputTime";
+import CountDown from "./CountDown";
 import { useContextReducer } from "../../../context";
 
 export default () => {
@@ -11,7 +12,7 @@ export default () => {
 
   const renderSection = () => {
     if (stage === "input") return <InputTime />;
-    if (stage === "count") return <p>count</p>;
+    if (stage === "count") return <CountDown />;
   };
 
   return <main className={css(styles.content)}>{renderSection()}</main>;
