@@ -1,4 +1,4 @@
-import React, { createContext, useContext, FC } from "react";
+import React, { createContext, useContext, FC, useMemo } from "react";
 
 import {
   useTimeInputReducer,
@@ -20,11 +20,12 @@ export const ContextProvider: FC = ({ children }) => {
   const useTimeInput = useTimeInputReducer();
   const useStage = useStageReducer();
 
-  return (
-    <Context.Provider value={{ timeInput: useTimeInput, stage: useStage }}>
-      {children}
-    </Context.Provider>
+  const contextValue = useMemo(
+    () => ({ timeInput: useTimeInput, stage: useStage }),
+    [useTimeInput, useStage]
   );
+
+  return <Context.Provider value={contextValue}>{children}</Context.Provider>;
 };
 
 export const useContextReducer = () => useContext(Context);
