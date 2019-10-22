@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import Main from "./inputTime";
+import InputTime from "./InputTime";
 
 export default () => {
   return (
-    <section className={css(styles.content)}>
-      <Main />
-    </section>
+    <main className={css(styles.content)}>
+      <InputTime />
+    </main>
   );
 };
 

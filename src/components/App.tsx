@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import Section from "./section";
-import Footer from "./Footer";
+import Main from "./page/Main";
+import Footer from "./page/Footer";
 
 const App: React.FC = () => {
   return (
     <main className={css(styles.layout)}>
-      <Section />
+      <Main />
       <Footer />
     </main>
   );

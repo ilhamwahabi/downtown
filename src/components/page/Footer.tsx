@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { ReactComponent as Copyright } from "../svg/copyright.svg";
+import { ReactComponent as Copyright } from "../../svg/copyright.svg";
 
 export default () => {
   return (

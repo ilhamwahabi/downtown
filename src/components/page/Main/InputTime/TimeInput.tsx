@@ -1,7 +1,10 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { useTimeInputReducer, ETimeActionType } from "../../reducers/timeInput";
+import {
+  useTimeInputReducer,
+  ETimeActionType
+} from "../../../../reducers/timeInput";
 
 const TimeInput = () => {
   const [state, dispatch] = useTimeInputReducer();
