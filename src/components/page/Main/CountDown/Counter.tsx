@@ -14,9 +14,7 @@ const Counter = () => {
 
   const [time, setTime] = useState(timeInSeconds);
 
-  useInterval(() => {
-    setTime(time - 1);
-  }, 1000);
+  useInterval(() => setTime(time - 1), time === 0 ? null : 1000);
 
   const hours = Math.floor(time / (60 * 60));
   const minutes = Math.floor((time % (60 * 60)) / 60);
