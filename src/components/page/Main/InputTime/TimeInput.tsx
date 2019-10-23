@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     width: 75,
     border: "1px solid #607D8B",
     borderRadius: 5,
-    fontSize: 75,
+    fontSize: 100,
     textAlign: "center",
     color: "#263238",
     outline: "none"
