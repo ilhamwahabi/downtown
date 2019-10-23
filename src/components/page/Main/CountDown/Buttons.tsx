@@ -5,7 +5,6 @@ const Buttons = () => {
   return (
     <div className={css(styles.container)}>
       <button className={css(styles.button)}>Pause</button>
-      <button className={css(styles.button)}>Stop</button>
     </div>
   );
 };
