@@ -6,10 +6,12 @@ import { EStageActionType } from "../../../../reducers/stage";
 
 const StartButton = () => {
   const {
-    stage: [, stageDispatch]
+    stage: [, stageDispatch],
+    timeInput: [{ hour, minute, second }]
   } = useContextReducer();
 
   const actionStageToCount = () => {
+    if (hour === "00" && minute === "00" && second === "00") return;
     stageDispatch({ type: EStageActionType.TO_COUNT_STAGE });
   };
 
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
       color: "white"
     },
 
-    ":focus": {
+    ":active": {
       backgroundColor: "black",
       color: "white"
     }
