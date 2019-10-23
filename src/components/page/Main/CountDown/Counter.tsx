@@ -16,15 +16,26 @@ const Counter = () => {
 
   useInterval(() => setTime(time - 1), time === 0 ? null : 1000);
 
-  const hours = Math.floor(time / (60 * 60));
-  const minutes = Math.floor((time % (60 * 60)) / 60);
-  const seconds = Math.floor((time % (60 * 60)) % 60);
+  const printTimeFragment = (time: number) => {
+    if (time < 10) return `0${time}`;
+    return time;
+  };
 
-  return (
-    <div className={css(styles.time)}>
-      {hours}:{minutes}:{seconds}
-    </div>
-  );
+  const printTime = () => {
+    const hours = Math.floor(time / (60 * 60));
+    const minutes = Math.floor((time % (60 * 60)) / 60);
+    const seconds = Math.floor((time % (60 * 60)) % 60);
+
+    return (
+      <>
+        <span>{printTimeFragment(hours)}</span>:
+        <span>{printTimeFragment(minutes)}</span>:
+        <span>{printTimeFragment(seconds)}</span>
+      </>
+    );
+  };
+
+  return <div className={css(styles.time)}>{printTime()}</div>;
 };
 
 const styles = StyleSheet.create({
