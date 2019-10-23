@@ -4,7 +4,13 @@ import { StyleSheet, css } from "aphrodite";
 import { useContextReducer } from "../../../../context";
 import { useInterval } from "../../../../hooks/setInterval";
 
-const Counter = () => {
+interface ICounterProps {
+  counting: boolean;
+}
+
+const Counter = (props: ICounterProps) => {
+  const { counting } = props;
+
   const {
     timeInput: [{ hour, minute, second }]
   } = useContextReducer();
@@ -14,7 +20,7 @@ const Counter = () => {
 
   const [time, setTime] = useState(timeInSeconds);
 
-  useInterval(() => setTime(time - 1), time === 0 ? null : 1000);
+  useInterval(() => setTime(time - 1), time === 0 || !counting ? null : 1000);
 
   const printTimeFragment = (time: number) => {
     if (time < 10) return `0${time}`;

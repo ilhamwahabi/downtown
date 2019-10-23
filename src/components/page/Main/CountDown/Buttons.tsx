@@ -1,12 +1,30 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-const Buttons = () => {
-  return (
-    <div className={css(styles.container)}>
-      <button className={css(styles.button)}>Pause</button>
-    </div>
-  );
+interface IButtonsProps {
+  counting: boolean;
+  resumeCounting: Function;
+  pauseCounting: Function;
+}
+
+const Buttons = (props: IButtonsProps) => {
+  const { counting, resumeCounting, pauseCounting } = props;
+
+  const renderButton = () => {
+    if (counting)
+      return (
+        <button className={css(styles.button)} onClick={() => pauseCounting()}>
+          Pause
+        </button>
+      );
+    return (
+      <button className={css(styles.button)} onClick={() => resumeCounting()}>
+        Resume
+      </button>
+    );
+  };
+
+  return <div className={css(styles.container)}>{renderButton()}</div>;
 };
 
 const styles = StyleSheet.create({
