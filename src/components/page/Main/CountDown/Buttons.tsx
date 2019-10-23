@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+import { useContextReducer } from "../../../../context";
+import { EStageActionType } from "../../../../reducers";
 
 interface IButtonsProps {
   counting: boolean;
@@ -10,7 +12,14 @@ interface IButtonsProps {
 const Buttons = (props: IButtonsProps) => {
   const { counting, resumeCounting, pauseCounting } = props;
 
-  const renderButton = () => {
+  const {
+    stage: [, dispatchStage]
+  } = useContextReducer();
+
+  const reset = () =>
+    !counting && dispatchStage({ type: EStageActionType.TO_INPUT_STAGE });
+
+  const renderCountingButton = () => {
     if (counting)
       return (
         <button className={css(styles.button)} onClick={() => pauseCounting()}>
@@ -24,7 +33,20 @@ const Buttons = (props: IButtonsProps) => {
     );
   };
 
-  return <div className={css(styles.container)}>{renderButton()}</div>;
+  const renderResetButton = () => {
+    return (
+      <button className={css(styles.button)} onClick={reset}>
+        Reset
+      </button>
+    );
+  };
+
+  return (
+    <div className={css(styles.container)}>
+      {renderCountingButton()}
+      {renderResetButton()}
+    </div>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -35,6 +57,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     color: "black",
     borderRadius: 2.5,
     border: "1px solid black",
