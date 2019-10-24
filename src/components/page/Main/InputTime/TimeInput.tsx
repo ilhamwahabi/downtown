@@ -28,8 +28,8 @@ const TimeInput = () => {
   ) => {
     const target = event.target as EventTarget & HTMLInputElement;
 
-    const currentForm = target.form as HTMLFormElement;
-    const nextInput = currentForm.elements[dispatchType + 1] as
+    const form = target.form as HTMLFormElement;
+    const nextInput = form.elements[dispatchType + 1] as
       | HTMLInputElement
       | HTMLButtonElement;
 
@@ -43,6 +43,7 @@ const TimeInput = () => {
   ) => {
     const { value } = event.target;
 
+    if (!/\d/.test(value)) return;
     if (parseInt(value) > maxValue) return;
     dispatch({
       type: dispatchType,
