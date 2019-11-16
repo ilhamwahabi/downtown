@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import { ETimeActionType } from "../../../reducers/timeInput";
@@ -11,14 +11,15 @@ const {
   CHANGE_MINUTE_FIRST_DIGIT,
   CHANGE_MINUTE_SECOND_DIGIT,
   CHANGE_SECOND_FIRST_DIGIT,
-  CHANGE_SECOND_SECOND_DIGIT
+  CHANGE_SECOND_SECOND_DIGIT,
+  DECREASE_TIME
 } = ETimeActionType;
 
 interface ITimeInputProps {
   counting: boolean;
 }
 
-const TimeInput: React.FC<ITimeInputProps> = props => {
+const Time: React.FC<ITimeInputProps> = props => {
   const { counting } = props;
 
   const {
@@ -26,31 +27,14 @@ const TimeInput: React.FC<ITimeInputProps> = props => {
     stage: [stage]
   } = useContextReducer();
 
-  const timeInSeconds =
-    parseInt(hour) * 3600 + parseInt(minute) * 60 + parseInt(second);
-
-  const [time, setTime] = useState(timeInSeconds);
-
-  useInterval(() => setTime(time - 1), time === 0 || !counting ? null : 1000);
-
-  const printTimeFragment = (time: number) => {
-    if (time < 10) return `0${time}`;
-    return time;
-  };
-
-  const printTime = () => {
-    const hours = Math.floor(time / (60 * 60));
-    const minutes = Math.floor((time % (60 * 60)) / 60);
-    const seconds = Math.floor((time % (60 * 60)) % 60);
-
-    return (
-      <>
-        <span>{printTimeFragment(hours)}</span>:
-        <span>{printTimeFragment(minutes)}</span>:
-        <span>{printTimeFragment(seconds)}</span>
-      </>
-    );
-  };
+  useInterval(
+    () => dispatch({ type: DECREASE_TIME }),
+    (hour === "00" && minute === "00" && second === "00") ||
+      stage === "input" ||
+      !counting
+      ? null
+      : 1000
+  );
 
   const actionSelectField = (event: React.FocusEvent<HTMLInputElement>) => {
     event.target.select();
@@ -97,7 +81,7 @@ const TimeInput: React.FC<ITimeInputProps> = props => {
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
       value={initValue}
-      disabled={stage === "count"}
+      disabled={stage === "count" && counting}
     />
   );
 
@@ -134,18 +118,15 @@ const TimeInput: React.FC<ITimeInputProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // width: "75%"
+  inputsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   separator: {
     fontSize: 100,
     color: "var(--tertiary)",
     margin: "0 15px"
-  },
-  inputsContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
   },
   inputContainer: {
     display: "flex",
@@ -165,4 +146,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TimeInput;
+export default Time;

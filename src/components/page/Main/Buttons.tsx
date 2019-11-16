@@ -10,7 +10,7 @@ interface IButtonsProps {
   pauseCounting: Function;
 }
 
-const StartButton: React.FC<IButtonsProps> = props => {
+const Buttons: React.FC<IButtonsProps> = props => {
   const { counting, resumeCounting, pauseCounting } = props;
 
   const {
@@ -22,9 +22,6 @@ const StartButton: React.FC<IButtonsProps> = props => {
     if (hour === "00" && minute === "00" && second === "00") return;
     dispatchStage({ type: EStageActionType.TO_COUNT_STAGE });
   };
-
-  const reset = () =>
-    !counting && dispatchStage({ type: EStageActionType.TO_INPUT_STAGE });
 
   const renderCountingButton = () => {
     if (counting)
@@ -40,14 +37,6 @@ const StartButton: React.FC<IButtonsProps> = props => {
     );
   };
 
-  const renderResetButton = () => {
-    return (
-      <button className={css(styles.button)} onClick={reset}>
-        RESET
-      </button>
-    );
-  };
-
   const renderStartButton = () => {
     return (
       <button className={css(styles.button)} onClick={actionStageToCount}>
@@ -59,7 +48,7 @@ const StartButton: React.FC<IButtonsProps> = props => {
   return (
     <div className={css(styles.buttonContainer)}>
       {stage === "input" && renderStartButton()}
-      {stage === "count" && [renderCountingButton(), renderResetButton()]}
+      {stage === "count" && renderCountingButton()}
     </div>
   );
 };
@@ -98,4 +87,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default StartButton;
+export default Buttons;
