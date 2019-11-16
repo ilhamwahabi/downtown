@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/downtown/static/css/main.57ef94a5.chunk.css",
-    "main.js": "/downtown/static/js/main.7d03d56a.chunk.js",
-    "main.js.map": "/downtown/static/js/main.7d03d56a.chunk.js.map",
+    "main.css": "/downtown/static/css/main.55bbcc31.chunk.css",
+    "main.js": "/downtown/static/js/main.96db5f1b.chunk.js",
+    "main.js.map": "/downtown/static/js/main.96db5f1b.chunk.js.map",
     "runtime~main.js": "/downtown/static/js/runtime~main.dc0c3d3a.js",
     "runtime~main.js.map": "/downtown/static/js/runtime~main.dc0c3d3a.js.map",
     "static/js/2.cfbafd48.chunk.js": "/downtown/static/js/2.cfbafd48.chunk.js",
     "static/js/2.cfbafd48.chunk.js.map": "/downtown/static/js/2.cfbafd48.chunk.js.map",
     "index.html": "/downtown/index.html",
-    "precache-manifest.b50a0fe165f6d7f6af365edbb743fdca.js": "/downtown/precache-manifest.b50a0fe165f6d7f6af365edbb743fdca.js",
+    "precache-manifest.d5d747e1e70fa66083fdeaf9a0434837.js": "/downtown/precache-manifest.d5d747e1e70fa66083fdeaf9a0434837.js",
     "service-worker.js": "/downtown/service-worker.js",
-    "static/css/main.57ef94a5.chunk.css.map": "/downtown/static/css/main.57ef94a5.chunk.css.map",
+    "static/css/main.55bbcc31.chunk.css.map": "/downtown/static/css/main.55bbcc31.chunk.css.map",
     "static/media/copyright.0d29c5c5.svg": "/downtown/static/media/copyright.0d29c5c5.svg",
     "static/media/settings.04e848f8.svg": "/downtown/static/media/settings.04e848f8.svg"
   }
