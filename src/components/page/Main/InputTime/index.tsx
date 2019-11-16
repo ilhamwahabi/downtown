@@ -19,7 +19,7 @@ const InputTime = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "50%"
+    // width: "50%"
   }
 });
 

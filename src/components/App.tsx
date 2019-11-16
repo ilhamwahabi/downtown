@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     height: "100vh",
     display: "flex",
     flex: "auto",
-    flexDirection: "column"
+    flexDirection: "column",
+    backgroundColor: "var(--secondary)"
   }
 });
 

@@ -18,7 +18,7 @@ const StartButton = () => {
   return (
     <div className={css(styles.buttonContainer)}>
       <button className={css(styles.button)} onClick={actionStageToCount}>
-        Start
+        START
       </button>
     </div>
   );
@@ -29,27 +29,27 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   button: {
-    backgroundColor: "white",
-    color: "black",
-    borderRadius: 2.5,
-    border: "1px solid black",
+    backgroundColor: "transparent",
+    color: "var(--tertiary)",
+    borderRadius: 5,
+    border: "2.5px solid var(--tertiary)",
     padding: "0 15px",
-    height: 40,
-    width: 100,
+    height: 50,
+    width: 125,
     marginTop: 75,
     cursor: "pointer",
-    fontSize: 16,
+    fontSize: 20,
     outline: "none",
     transition: "color .25s, background-color .25s",
 
     ":hover": {
-      backgroundColor: "black",
-      color: "white"
+      backgroundColor: "var(--tertiary)",
+      color: "var(--secondary)"
     },
 
     ":active": {
-      backgroundColor: "black",
-      color: "white"
+      backgroundColor: "var(--tertiary)",
+      color: "var(--secondary)"
     }
   }
 });

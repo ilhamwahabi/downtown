@@ -21,7 +21,6 @@ export default () => {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

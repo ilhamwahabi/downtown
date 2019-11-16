@@ -22,7 +22,6 @@ export default () => {
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: "white",
     textAlign: "center",
     padding: "24px 50px"
   },
@@ -33,14 +32,15 @@ const styles = StyleSheet.create({
     textDecoration: "none",
     outline: "none",
     cursor: "pointer",
-    color: "rgba(0,0,0,.65)",
-    fontSize: 14
+    fontSize: 14,
+    color: "var(--tertiary)",
+    fontWeight: "lighter"
   },
   copyrightSvgIcon: {
     width: 14,
     height: 14,
-    fill: "rgba(0, 0, 0, 0.75)",
-    margin: "0 2.5px",
+    fill: "var(--tertiary)",
+    margin: "0 5px",
     paddingBottom: 1
   }
 });

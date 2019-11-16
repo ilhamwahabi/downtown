@@ -100,11 +100,12 @@ const TimeInput = () => {
 
 const styles = StyleSheet.create({
   container: {
-    width: "50%"
+    // width: "75%"
   },
   separator: {
-    fontSize: 75,
-    color: "#263238"
+    fontSize: 100,
+    color: "var(--tertiary)",
+    margin: "0 15px"
   },
   inputsContainer: {
     display: "flex",
@@ -114,16 +115,17 @@ const styles = StyleSheet.create({
   inputContainer: {
     display: "flex",
     justifyContent: "space-between",
-    width: 175
+    width: 225
   },
   input: {
     height: 150,
-    width: 75,
-    border: "1px solid #607D8B",
-    borderRadius: 5,
-    fontSize: 100,
+    width: 100,
+    border: "none",
+    borderBottom: "5px solid var(--primary)",
+    fontSize: 150,
     textAlign: "center",
-    color: "#263238",
+    backgroundColor: "transparent",
+    color: "var(--tertiary)",
     outline: "none"
   }
 });

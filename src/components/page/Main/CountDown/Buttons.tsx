@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+
 import { useContextReducer } from "../../../../context";
 import { EStageActionType } from "../../../../reducers";
 
@@ -23,12 +24,12 @@ const Buttons = (props: IButtonsProps) => {
     if (counting)
       return (
         <button className={css(styles.button)} onClick={() => pauseCounting()}>
-          Pause
+          PAUSE
         </button>
       );
     return (
       <button className={css(styles.button)} onClick={() => resumeCounting()}>
-        Resume
+        RESUME
       </button>
     );
   };
@@ -36,7 +37,7 @@ const Buttons = (props: IButtonsProps) => {
   const renderResetButton = () => {
     return (
       <button className={css(styles.button)} onClick={reset}>
-        Reset
+        RESET
       </button>
     );
   };
@@ -56,25 +57,30 @@ const styles = StyleSheet.create({
     justifyContent: "space-around"
   },
   button: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
+    color: "var(--tertiary)",
+    borderRadius: 5,
+    border: "2.5px solid var(--tertiary)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "black",
-    borderRadius: 2.5,
-    border: "1px solid black",
     padding: "0 15px",
-    height: 40,
-    width: 100,
+    height: 50,
+    width: 125,
     marginTop: 75,
     cursor: "pointer",
-    fontSize: 16,
+    fontSize: 20,
     outline: "none",
     transition: "color .25s, background-color .25s",
 
     ":hover": {
-      backgroundColor: "black",
-      color: "white"
+      backgroundColor: "var(--tertiary)",
+      color: "var(--secondary)"
+    },
+
+    ":active": {
+      backgroundColor: "var(--tertiary)",
+      color: "var(--secondary)"
     }
   }
 });
