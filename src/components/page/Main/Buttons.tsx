@@ -4,18 +4,11 @@ import { StyleSheet, css } from "aphrodite";
 import { useContextReducer } from "../../../context";
 import { EStageActionType } from "../../../reducers/stage";
 
-interface IButtonsProps {
-  counting: boolean;
-  resumeCounting: Function;
-  pauseCounting: Function;
-}
-
-const Buttons: React.FC<IButtonsProps> = props => {
-  const { counting, resumeCounting, pauseCounting } = props;
-
+const Buttons: React.FC = () => {
   const {
     stage: [stage, dispatchStage],
-    timeInput: [{ hour, minute, second }]
+    timeInput: [{ hour, minute, second }],
+    counting: [isCounting, dispatchCounting]
   } = useContextReducer();
 
   const actionStageToCount = () => {
@@ -24,14 +17,20 @@ const Buttons: React.FC<IButtonsProps> = props => {
   };
 
   const renderCountingButton = () => {
-    if (counting)
+    if (isCounting)
       return (
-        <button className={css(styles.button)} onClick={() => pauseCounting()}>
+        <button
+          className={css(styles.button)}
+          onClick={() => dispatchCounting("pause")}
+        >
           PAUSE
         </button>
       );
     return (
-      <button className={css(styles.button)} onClick={() => resumeCounting()}>
+      <button
+        className={css(styles.button)}
+        onClick={() => dispatchCounting("resume")}
+      >
         RESUME
       </button>
     );

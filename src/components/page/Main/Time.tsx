@@ -15,23 +15,18 @@ const {
   DECREASE_TIME
 } = ETimeActionType;
 
-interface ITimeInputProps {
-  counting: boolean;
-}
-
-const Time: React.FC<ITimeInputProps> = props => {
-  const { counting } = props;
-
+const Time: React.FC = () => {
   const {
     timeInput: [{ hour, minute, second }, dispatch],
-    stage: [stage]
+    stage: [stage],
+    counting: [isCounting]
   } = useContextReducer();
 
   useInterval(
     () => dispatch({ type: DECREASE_TIME }),
     (hour === "00" && minute === "00" && second === "00") ||
       stage === "input" ||
-      !counting
+      !isCounting
       ? null
       : 1000
   );
@@ -81,7 +76,7 @@ const Time: React.FC<ITimeInputProps> = props => {
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
       value={initValue}
-      disabled={stage === "count" && counting}
+      disabled={stage === "count" && isCounting}
     />
   );
 
