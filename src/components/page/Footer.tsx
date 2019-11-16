@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     height: 14,
     fill: "var(--tertiary)",
     margin: "0 5px",
-    paddingBottom: 1
+    paddingBottom: 1,
+    fontWeight: "lighter"
   }
 });

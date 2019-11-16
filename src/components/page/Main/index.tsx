@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import Time from "./Time";
 import Buttons from "./Buttons";
-import { useContextReducer } from "../../../context";
 
 const InputTime = () => {
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
