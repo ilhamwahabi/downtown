@@ -121,23 +121,49 @@ const styles = StyleSheet.create({
   separator: {
     fontSize: 100,
     color: "var(--tertiary)",
-    margin: "0 15px"
+    margin: "0 15px",
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      fontSize: 50,
+      margin: "0 7.5px"
+    }
   },
   inputContainer: {
     display: "flex",
     justifyContent: "space-between",
-    width: 225
+    width: 225,
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      width: 175
+    },
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      width: 75
+    },
+    "@media (max-width: 320px)": {
+      width: 65
+    }
   },
   input: {
     height: 150,
     width: 100,
+    fontSize: 150,
     border: "none",
     borderBottom: "5px solid var(--primary)",
-    fontSize: 150,
     textAlign: "center",
     backgroundColor: "transparent",
     color: "var(--tertiary)",
-    outline: "none"
+    outline: "none",
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      width: 75,
+      fontSize: 125
+    },
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      width: 30,
+      height: 50,
+      fontSize: 50
+    },
+    "@media (max-width: 320px)": {
+      width: 25,
+      fontSize: 45
+    }
   }
 });
 

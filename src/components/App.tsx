@@ -22,6 +22,7 @@ const App: React.FC = () => {
 const styles = StyleSheet.create({
   layout: {
     height: "100vh",
+    width: "100%",
     display: "flex",
     flex: "auto",
     flexDirection: "column",
