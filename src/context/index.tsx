@@ -26,7 +26,7 @@ export const ContextProvider: FC = ({ children }) => {
 
   const contextValue = useMemo(
     () => ({ timeInput: useTimeInput, stage: useStage, counting: useCounting }),
-    [useTimeInput, useStage]
+    [useTimeInput, useStage, useCounting]
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;

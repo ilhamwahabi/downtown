@@ -38,7 +38,11 @@ const Buttons: React.FC = () => {
 
   const renderStartButton = () => {
     return (
-      <button className={css(styles.button)} onClick={actionStageToCount}>
+      <button
+        className={css(styles.button)}
+        onClick={actionStageToCount}
+        disabled={hour === "00" && minute === "00" && second === "00"}
+      >
         START
       </button>
     );
@@ -82,6 +86,15 @@ const styles = StyleSheet.create({
     ":active": {
       backgroundColor: "var(--tertiary)",
       color: "var(--secondary)"
+    },
+
+    ":focus": {
+      backgroundColor: "var(--tertiary)",
+      color: "var(--secondary)"
+    },
+
+    ":disabled": {
+      cursor: "not-allowed"
     },
 
     "@media (min-width: 320px) and (max-width: 480px)": {
