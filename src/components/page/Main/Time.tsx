@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { ETimeActionType } from "../../../../reducers/timeInput";
-import { useContextReducer } from "../../../../context";
+import { ETimeActionType } from "../../../reducers/timeInput";
+import { useContextReducer } from "../../../context";
+import { useInterval } from "../../../hooks/setInterval";
 
 const {
   CHANGE_HOUR_FIRST_DIGIT,
@@ -13,10 +14,43 @@ const {
   CHANGE_SECOND_SECOND_DIGIT
 } = ETimeActionType;
 
-const TimeInput = () => {
+interface ITimeInputProps {
+  counting: boolean;
+}
+
+const TimeInput: React.FC<ITimeInputProps> = props => {
+  const { counting } = props;
+
   const {
-    timeInput: [{ hour, minute, second }, dispatch]
+    timeInput: [{ hour, minute, second }, dispatch],
+    stage: [stage]
   } = useContextReducer();
+
+  const timeInSeconds =
+    parseInt(hour) * 3600 + parseInt(minute) * 60 + parseInt(second);
+
+  const [time, setTime] = useState(timeInSeconds);
+
+  useInterval(() => setTime(time - 1), time === 0 || !counting ? null : 1000);
+
+  const printTimeFragment = (time: number) => {
+    if (time < 10) return `0${time}`;
+    return time;
+  };
+
+  const printTime = () => {
+    const hours = Math.floor(time / (60 * 60));
+    const minutes = Math.floor((time % (60 * 60)) / 60);
+    const seconds = Math.floor((time % (60 * 60)) % 60);
+
+    return (
+      <>
+        <span>{printTimeFragment(hours)}</span>:
+        <span>{printTimeFragment(minutes)}</span>:
+        <span>{printTimeFragment(seconds)}</span>
+      </>
+    );
+  };
 
   const actionSelectField = (event: React.FocusEvent<HTMLInputElement>) => {
     event.target.select();
@@ -63,6 +97,7 @@ const TimeInput = () => {
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
       value={initValue}
+      disabled={stage === "count"}
     />
   );
 

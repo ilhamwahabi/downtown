@@ -1,25 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import InputTime from "./InputTime";
-import CountDown from "./CountDown";
-import { useContextReducer } from "../../../context";
+import Time from "./Time";
+import Buttons from "./Buttons";
 
-export default () => {
-  const {
-    stage: [stage]
-  } = useContextReducer();
+const InputTime = () => {
+  const [counting, setCounting] = useState(true);
 
-  const renderSection = () => {
-    if (stage === "input") return <InputTime />;
-    if (stage === "count") return <CountDown />;
+  const resumeCounting = () => setCounting(true);
+  const pauseCounting = () => setCounting(false);
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
   };
 
-  return <main className={css(styles.content)}>{renderSection()}</main>;
+  return (
+    <form onSubmit={handleFormSubmit} className={css(styles.container)}>
+      <Time counting={counting} />
+      <Buttons
+        counting={counting}
+        pauseCounting={pauseCounting}
+        resumeCounting={resumeCounting}
+      />
+    </form>
+  );
 };
 
 const styles = StyleSheet.create({
-  content: {
+  container: {
     flex: 1,
     display: "flex",
     flexDirection: "column",
@@ -27,3 +35,5 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+
+export default InputTime;
