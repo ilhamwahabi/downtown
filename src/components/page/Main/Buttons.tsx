@@ -82,6 +82,13 @@ const styles = StyleSheet.create({
     ":active": {
       backgroundColor: "var(--tertiary)",
       color: "var(--secondary)"
+    },
+
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      height: 40,
+      width: 100,
+      fontSize: 16,
+      marginTop: 50
     }
   }
 });
