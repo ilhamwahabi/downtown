@@ -19,8 +19,7 @@ const {
 const Time: React.FC = () => {
   const {
     timeInput: [{ hour, minute, second }, dispatchTime],
-    stage: [stage, dispatchStage],
-    counting: [isCounting]
+    stage: [stage, dispatchStage]
   } = useContextReducer();
 
   useInterval(
@@ -28,13 +27,13 @@ const Time: React.FC = () => {
       dispatchTime({ type: DECREASE_TIME });
       if (hour === "00" && minute === "00" && second === "01") {
         setTimeout(() => {
-          dispatchStage({ type: EStageActionType.TO_INPUT_STAGE });
+          dispatchStage({ type: EStageActionType.INPUT });
         }, 1000);
       }
     },
     (hour === "00" && minute === "00" && second === "00") ||
       stage === "input" ||
-      !isCounting
+      stage === "paused"
       ? null
       : 1000
   );
@@ -94,7 +93,7 @@ const Time: React.FC = () => {
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
       onKeyDown={actionDeselectElement}
       value={initValue}
-      disabled={stage === "count" && isCounting}
+      disabled={stage === "counting"}
     />
   );
 

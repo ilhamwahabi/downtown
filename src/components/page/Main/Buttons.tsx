@@ -7,51 +7,47 @@ import { EStageActionType } from "../../../reducers/stage";
 const Buttons: React.FC = () => {
   const {
     stage: [stage, dispatchStage],
-    timeInput: [{ hour, minute, second }],
-    counting: [isCounting, dispatchCounting]
+    timeInput: [{ hour, minute, second }]
   } = useContextReducer();
 
   const actionStageToCount = () => {
     if (hour === "00" && minute === "00" && second === "00") return;
-    dispatchStage({ type: EStageActionType.TO_COUNT_STAGE });
+    dispatchStage({ type: EStageActionType.COUNT });
   };
 
-  const renderCountingButton = () => {
-    if (isCounting)
-      return (
-        <button
-          className={css(styles.button)}
-          onClick={() => dispatchCounting("pause")}
-        >
-          PAUSE
-        </button>
-      );
-    return (
-      <button
-        className={css(styles.button)}
-        onClick={() => dispatchCounting("resume")}
-      >
-        RESUME
-      </button>
-    );
-  };
+  const renderPauseButton = () => (
+    <button
+      className={css(styles.button)}
+      onClick={() => dispatchStage({ type: EStageActionType.PAUSE })}
+    >
+      PAUSE
+    </button>
+  );
 
-  const renderStartButton = () => {
-    return (
-      <button
-        className={css(styles.button)}
-        onClick={actionStageToCount}
-        disabled={hour === "00" && minute === "00" && second === "00"}
-      >
-        START
-      </button>
-    );
-  };
+  const renderResumeButton = () => (
+    <button
+      className={css(styles.button)}
+      onClick={() => dispatchStage({ type: EStageActionType.COUNT })}
+    >
+      RESUME
+    </button>
+  );
+
+  const renderStartButton = () => (
+    <button
+      className={css(styles.button)}
+      onClick={actionStageToCount}
+      disabled={hour === "00" && minute === "00" && second === "00"}
+    >
+      START
+    </button>
+  );
 
   return (
     <div className={css(styles.buttonContainer)}>
       {stage === "input" && renderStartButton()}
-      {stage === "count" && renderCountingButton()}
+      {stage === "counting" && renderPauseButton()}
+      {stage === "paused" && renderResumeButton()}
     </div>
   );
 };

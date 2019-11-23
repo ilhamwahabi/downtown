@@ -1,12 +1,13 @@
 import { useReducer } from "react";
 
-export type TStageState = "input" | "count";
+export type TStageState = "input" | "counting" | "paused";
 
 export const initialStage: TStageState = "input";
 
 export enum EStageActionType {
-  "TO_INPUT_STAGE",
-  "TO_COUNT_STAGE"
+  "INPUT",
+  "COUNT",
+  "PAUSE"
 }
 
 export interface IStageAction {
@@ -15,10 +16,12 @@ export interface IStageAction {
 
 export const stageReducers = (state: TStageState, action: IStageAction) => {
   switch (action.type) {
-    case EStageActionType.TO_INPUT_STAGE:
+    case EStageActionType.INPUT:
       return "input";
-    case EStageActionType.TO_COUNT_STAGE:
-      return "count";
+    case EStageActionType.COUNT:
+      return "counting";
+    case EStageActionType.PAUSE:
+      return "paused";
     default:
       return state;
   }

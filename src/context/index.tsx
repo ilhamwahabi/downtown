@@ -6,15 +6,12 @@ import {
   ITimeAction,
   useStageReducer,
   TStageState,
-  IStageAction,
-  TCountingAction,
-  useCountingReducer
+  IStageAction
 } from "../reducers";
 
 interface IContextProps {
   timeInput: [ITimeState, React.Dispatch<ITimeAction>];
   stage: [TStageState, React.Dispatch<IStageAction>];
-  counting: [boolean, React.Dispatch<TCountingAction>];
 }
 
 export const Context = createContext({} as IContextProps);
@@ -22,11 +19,10 @@ export const Context = createContext({} as IContextProps);
 export const ContextProvider: FC = ({ children }) => {
   const useTimeInput = useTimeInputReducer();
   const useStage = useStageReducer();
-  const useCounting = useCountingReducer();
 
   const contextValue = useMemo(
-    () => ({ timeInput: useTimeInput, stage: useStage, counting: useCounting }),
-    [useTimeInput, useStage, useCounting]
+    () => ({ timeInput: useTimeInput, stage: useStage }),
+    [useTimeInput, useStage]
   );
 
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
