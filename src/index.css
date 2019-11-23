@@ -14,8 +14,3 @@ body {
 * {
   font-family: Roboto, sans-serif;
 }
-
-input::selection {
-  background-color: var(--quartenary);
-  color: white;
-}

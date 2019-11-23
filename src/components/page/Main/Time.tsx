@@ -151,6 +151,17 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     color: "var(--tertiary)",
     outline: "none",
+    transition: "border 0.25s ease-in",
+
+    ":disabled": {
+      borderColor: "var(--secondary)"
+    },
+
+    "::selection": {
+      backgroundColor: "var(--quartenary)",
+      color: "white"
+    },
+
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 75,
       fontSize: 125
