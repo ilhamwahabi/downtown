@@ -26,3 +26,9 @@ Or try directly here: https://iwgx.github.io/downtown/
 1. Add critical mode, for example counter color became color when near the end
 2. Another counter form, maybe bar & pie?
 3. Settings button for above
+4. Notification when time is out
+5. Fix few bugs
+
+   - last input not focus to start button when it was input that first changed
+
+   - resume button should not keep focus after pause button is clicked
