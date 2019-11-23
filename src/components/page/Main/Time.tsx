@@ -72,6 +72,15 @@ const Time: React.FC = () => {
     });
   };
 
+  const actionDeselectElement = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      const selection = window.getSelection();
+      if (selection) selection.removeAllRanges();
+    }
+  };
+
   const renderInput = (
     initValue: string,
     dispatchType: ETimeActionType,
@@ -83,6 +92,7 @@ const Time: React.FC = () => {
       onFocus={actionSelectField}
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
+      onKeyDown={actionDeselectElement}
       value={initValue}
       disabled={stage === "count" && isCounting}
     />
