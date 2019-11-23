@@ -4,6 +4,7 @@ import { StyleSheet, css } from "aphrodite";
 import { ETimeActionType } from "../../../reducers/timeInput";
 import { useContextReducer } from "../../../context";
 import { useInterval } from "../../../hooks/setInterval";
+import { EStageActionType } from "../../../reducers";
 
 const {
   CHANGE_HOUR_FIRST_DIGIT,
@@ -17,13 +18,20 @@ const {
 
 const Time: React.FC = () => {
   const {
-    timeInput: [{ hour, minute, second }, dispatch],
-    stage: [stage],
+    timeInput: [{ hour, minute, second }, dispatchTime],
+    stage: [stage, dispatchStage],
     counting: [isCounting]
   } = useContextReducer();
 
   useInterval(
-    () => dispatch({ type: DECREASE_TIME }),
+    () => {
+      dispatchTime({ type: DECREASE_TIME });
+      if (hour === "00" && minute === "00" && second === "01") {
+        setTimeout(() => {
+          dispatchStage({ type: EStageActionType.TO_INPUT_STAGE });
+        }, 1000);
+      }
+    },
     (hour === "00" && minute === "00" && second === "00") ||
       stage === "input" ||
       !isCounting
@@ -58,7 +66,7 @@ const Time: React.FC = () => {
 
     if (!/\d/.test(value)) return;
     if (parseInt(value) > maxValue) return;
-    dispatch({
+    dispatchTime({
       type: dispatchType,
       payload: value
     });
