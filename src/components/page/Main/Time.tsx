@@ -44,7 +44,8 @@ const Time: React.FC = () => {
       | HTMLInputElement
       | HTMLButtonElement;
 
-    nextInput.focus();
+    if (nextInput instanceof HTMLInputElement) nextInput.focus();
+    else setTimeout(() => nextInput.focus());
   };
 
   const actionChangeValue = (
