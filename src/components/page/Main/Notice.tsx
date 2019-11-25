@@ -1,7 +1,12 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
+
 import { useContextReducer } from "../../../context";
 import { EStageActionType } from "../../../reducers";
+import {
+  zoomOutKeyframes,
+  toBackgroundSecondaryKeyframes
+} from "../../../keyframes";
 
 const Notice = () => {
   const {
@@ -30,24 +35,6 @@ const Notice = () => {
   );
 };
 
-const zoomOutKeyframes = {
-  from: {
-    transform: "scale(0)"
-  },
-  to: {
-    transform: "scale(1)"
-  }
-};
-
-const backgroundKeyframes = {
-  from: {
-    backgroundColor: "transparent"
-  },
-  to: {
-    backgroundColor: "var(--secondary)"
-  }
-};
-
 const styles = StyleSheet.create({
   notice: {
     position: "fixed",
@@ -69,6 +56,7 @@ const styles = StyleSheet.create({
     margin: "0 15px",
     animationName: [zoomOutKeyframes],
     animationDuration: "1s",
+    animationTimingFunction: "ease-out-in",
     animationDelay: ".5s",
     animationFillMode: "forwards",
 
@@ -90,8 +78,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 1,
     opacity: 0.9,
-    animationName: [backgroundKeyframes],
+    animationName: [toBackgroundSecondaryKeyframes],
     animationDuration: "1s",
+    animationTimingFunction: "ease-out-in",
     animationDelay: ".5s",
     animationFillMode: "forwards"
   }
