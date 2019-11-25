@@ -23,17 +23,9 @@ const Time: React.FC = () => {
   } = useContextReducer();
 
   useInterval(
-    () => {
-      dispatchTime({ type: DECREASE_TIME });
-      if (hour === "00" && minute === "00" && second === "01") {
-        setTimeout(() => {
-          dispatchStage({ type: EStageActionType.INPUT });
-        }, 1000);
-      }
-    },
+    () => dispatchTime({ type: DECREASE_TIME }),
     (hour === "00" && minute === "00" && second === "00") ||
-      stage === "input" ||
-      stage === "paused"
+      stage !== "counting"
       ? null
       : 1000
   );
