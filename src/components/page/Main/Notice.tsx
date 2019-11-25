@@ -70,7 +70,17 @@ const styles = StyleSheet.create({
     animationName: [zoomOutKeyframes],
     animationDuration: "1s",
     animationDelay: ".5s",
-    animationFillMode: "forwards"
+    animationFillMode: "forwards",
+
+    "@media (min-width: 768px) and (max-width: 1024px)": {
+      fontSize: 144
+    },
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      fontSize: 75
+    },
+    "@media (max-width: 320px)": {
+      fontSize: 60
+    }
   },
   backdrop: {
     position: "fixed",
