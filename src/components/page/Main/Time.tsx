@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 100,
     color: "var(--tertiary)",
     margin: "0 15px",
+
     "@media (min-width: 320px) and (max-width: 480px)": {
       fontSize: 50,
       margin: "0 7.5px"
@@ -148,6 +149,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "space-between",
     width: 225,
+
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 175
     },
@@ -168,15 +170,24 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     color: "var(--tertiary)",
     outline: "none",
-    transition: "border 0.25s ease-in",
+    transition:
+      "border 0.25s ease-in, background-size .25s ease-in-out, color .15s ease-out",
+    backgroundImage:
+      "linear-gradient(to top, var(--tertiary) 50%, var(--tertiary) 50%)",
+    backgroundRepeat: "repeat-x",
+    backgroundSize: "0% 0%",
 
     ":disabled": {
       borderColor: "var(--secondary)"
     },
 
-    "::selection": {
-      backgroundColor: "var(--quartenary)",
+    ":focus": {
+      backgroundSize: "100% 100%",
       color: "white"
+    },
+
+    "::selection": {
+      backgroundColor: "transparent"
     },
 
     "@media (min-width: 768px) and (max-width: 1024px)": {

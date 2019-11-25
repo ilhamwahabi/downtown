@@ -31,5 +31,3 @@ Or try directly here: https://iwgx.github.io/downtown/
 6. Fix few bugs
 
    - last input not focus to start button when it was input that first changed
-
-   - resume button should not keep focus after pause button is clicked
