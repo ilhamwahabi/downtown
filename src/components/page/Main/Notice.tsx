@@ -53,21 +53,24 @@ const styles = StyleSheet.create({
     fontSize: 240,
     transform: "scale(0)",
     color: "var(--quartenary)",
-    margin: "0 15px",
+    margin: "0 50px",
     animationName: [zoomOutKeyframes],
-    animationDuration: "1s",
-    animationTimingFunction: "ease-out-in",
+    animationDuration: ".5s",
+    animationTimingFunction: "ease-out",
     animationDelay: ".5s",
     animationFillMode: "forwards",
 
     "@media (min-width: 768px) and (max-width: 1024px)": {
-      fontSize: 144
+      fontSize: 144,
+      margin: "0 25px"
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
-      fontSize: 75
+      fontSize: 75,
+      margin: "0 15px"
     },
     "@media (max-width: 320px)": {
-      fontSize: 60
+      fontSize: 60,
+      margin: "0 15px"
     }
   },
   backdrop: {
@@ -79,8 +82,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
     opacity: 0.9,
     animationName: [toBackgroundSecondaryKeyframes],
-    animationDuration: "1s",
-    animationTimingFunction: "ease-out-in",
+    animationDuration: ".5s",
+    animationTimingFunction: "ease-out",
     animationDelay: ".5s",
     animationFillMode: "forwards"
   }
