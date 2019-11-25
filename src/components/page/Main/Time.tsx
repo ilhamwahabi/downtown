@@ -64,11 +64,29 @@ const Time: React.FC = () => {
   };
 
   const actionDeselectElement = (
-    event: React.KeyboardEvent<HTMLInputElement>
+    event: React.KeyboardEvent<HTMLInputElement>,
+    dispatchType: ETimeActionType
   ) => {
     if (event.key === "Enter") {
       const selection = window.getSelection();
       if (selection) selection.removeAllRanges();
+    } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+      const target = event.target as EventTarget & HTMLInputElement;
+
+      const form = target.form as HTMLFormElement;
+      const nextInput = form.elements[dispatchType + 1] as
+        | HTMLInputElement
+        | HTMLButtonElement;
+      const prevInput = form.elements[dispatchType - 1] as HTMLInputElement;
+
+      if (event.key === "ArrowRight" && nextInput instanceof HTMLInputElement) {
+        nextInput.focus();
+        setTimeout(() => nextInput.select());
+      }
+      if (event.key === "ArrowLeft" && prevInput instanceof HTMLInputElement) {
+        prevInput.focus();
+        setTimeout(() => prevInput.select());
+      }
     }
   };
 
@@ -83,7 +101,7 @@ const Time: React.FC = () => {
       onFocus={actionSelectField}
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
-      onKeyDown={actionDeselectElement}
+      onKeyDown={event => actionDeselectElement(event, dispatchType)}
       value={initValue}
       disabled={stage === "counting"}
     />
@@ -168,6 +186,7 @@ const styles = StyleSheet.create({
       "linear-gradient(to top, var(--tertiary) 50%, var(--tertiary) 50%)",
     backgroundRepeat: "repeat-x",
     backgroundSize: "0% 0%",
+    caretColor: "transparent",
 
     ":disabled": {
       borderColor: "var(--secondary)"
