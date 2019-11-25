@@ -91,8 +91,8 @@ const Time: React.FC = () => {
 
   const renderHourInput = () => (
     <div className={css(styles.inputContainer)}>
-      {renderInput(hour[0], CHANGE_HOUR_FIRST_DIGIT, 2)}
-      {renderInput(hour[1], CHANGE_HOUR_SECOND_DIGIT, 3)}
+      {renderInput(hour[0], CHANGE_HOUR_FIRST_DIGIT, 9)}
+      {renderInput(hour[1], CHANGE_HOUR_SECOND_DIGIT, 9)}
     </div>
   );
 
