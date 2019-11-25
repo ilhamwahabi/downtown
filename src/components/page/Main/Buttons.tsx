@@ -72,21 +72,30 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     fontSize: 20,
     outline: "none",
-    transition: "color .25s, background-color .25s",
+    transition: "color .25s, background-position .25s",
+    backgroundSize: "200% 200%",
+    backgroundImage:
+      "linear-gradient(to top, var(--tertiary) 50%, transparent 50%)",
 
     ":hover": {
-      backgroundColor: "var(--tertiary)",
-      color: "var(--secondary)"
+      color: "var(--secondary)",
+      backgroundPosition: "0 100%",
+      backgroundImage:
+        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
 
     ":active": {
-      backgroundColor: "var(--tertiary)",
-      color: "var(--secondary)"
+      color: "var(--secondary)",
+      backgroundPosition: "0 100%",
+      backgroundImage:
+        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
 
     ":focus": {
-      backgroundColor: "var(--tertiary)",
-      color: "var(--secondary)"
+      color: "var(--secondary)",
+      backgroundPosition: "0 100%",
+      backgroundImage:
+        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
 
     ":disabled": {
