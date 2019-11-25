@@ -4,7 +4,6 @@ import { StyleSheet, css } from "aphrodite";
 import { ETimeActionType } from "../../../reducers/timeInput";
 import { useContextReducer } from "../../../context";
 import { useInterval } from "../../../hooks/setInterval";
-import { EStageActionType } from "../../../reducers";
 
 const {
   CHANGE_HOUR_FIRST_DIGIT,
@@ -63,17 +62,17 @@ const Time: React.FC = () => {
     });
   };
 
-  const actionDeselectElement = (
+  const actionCheckPressedKey = (
     event: React.KeyboardEvent<HTMLInputElement>,
     dispatchType: ETimeActionType
   ) => {
+    const target = event.target as EventTarget & HTMLInputElement;
+    const form = target.form as HTMLFormElement;
+
     if (event.key === "Enter") {
       const selection = window.getSelection();
       if (selection) selection.removeAllRanges();
     } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
-      const target = event.target as EventTarget & HTMLInputElement;
-
-      const form = target.form as HTMLFormElement;
       const nextInput = form.elements[dispatchType + 1] as
         | HTMLInputElement
         | HTMLButtonElement;
@@ -87,6 +86,9 @@ const Time: React.FC = () => {
         prevInput.focus();
         setTimeout(() => prevInput.select());
       }
+    } else if (!/\d/.test(event.key)) {
+      const currentInput = form.elements[dispatchType] as HTMLInputElement;
+      setTimeout(() => currentInput.select());
     }
   };
 
@@ -101,7 +103,7 @@ const Time: React.FC = () => {
       onFocus={actionSelectField}
       onInput={event => actionFocusToNextInput(event, dispatchType)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
-      onKeyDown={event => actionDeselectElement(event, dispatchType)}
+      onKeyDown={event => actionCheckPressedKey(event, dispatchType)}
       value={initValue}
       disabled={stage === "counting"}
     />
@@ -208,7 +210,8 @@ const styles = StyleSheet.create({
     "@media (min-width: 320px) and (max-width: 480px)": {
       width: 30,
       height: 50,
-      fontSize: 50
+      fontSize: 50,
+      borderWidth: 2.5
     },
     "@media (max-width: 320px)": {
       width: 25,
