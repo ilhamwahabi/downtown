@@ -46,7 +46,8 @@ const Time: React.FC = () => {
 
   const actionFocusToNextInput = (
     event: React.FormEvent<HTMLInputElement>,
-    dispatchType: ETimeActionType
+    dispatchType: ETimeActionType,
+    maxValue: number
   ) => {
     const target = event.target as EventTarget & HTMLInputElement;
 
@@ -57,6 +58,7 @@ const Time: React.FC = () => {
 
     const value = getInputValue(event.currentTarget.value);
     if (!isNumber(value)) return;
+    if (parseInt(value) > maxValue) return;
 
     if (nextInput instanceof HTMLInputElement) nextInput.focus();
     else setTimeout(() => nextInput.focus());
@@ -113,7 +115,7 @@ const Time: React.FC = () => {
       className={css(styles.input)}
       type="text"
       onFocus={actionSelectField}
-      onInput={event => actionFocusToNextInput(event, dispatchType)}
+      onInput={event => actionFocusToNextInput(event, dispatchType, maxValue)}
       onChange={event => actionChangeValue(event, maxValue, dispatchType)}
       onKeyDown={event => actionCheckPressedKey(event, dispatchType)}
       value={initValue}
