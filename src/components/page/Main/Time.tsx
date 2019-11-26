@@ -18,7 +18,7 @@ const {
 const Time: React.FC = () => {
   const {
     timeInput: [{ hour, minute, second }, dispatchTime],
-    stage: [stage, dispatchStage]
+    stage: [stage]
   } = useContextReducer();
 
   useInterval(
@@ -33,6 +33,17 @@ const Time: React.FC = () => {
     event.target.select();
   };
 
+  const isNumber = (value: string): boolean => {
+    return /^\d$/.test(value);
+  };
+
+  // handle weird padded value when input is not expected
+  const getInputValue = (rawValue: string): string => {
+    return rawValue.length === 2 && isNumber(rawValue[0])
+      ? rawValue[1]
+      : rawValue;
+  };
+
   const actionFocusToNextInput = (
     event: React.FormEvent<HTMLInputElement>,
     dispatchType: ETimeActionType
@@ -44,6 +55,9 @@ const Time: React.FC = () => {
       | HTMLInputElement
       | HTMLButtonElement;
 
+    const value = getInputValue(event.currentTarget.value);
+    if (!isNumber(value)) return;
+
     if (nextInput instanceof HTMLInputElement) nextInput.focus();
     else setTimeout(() => nextInput.focus());
   };
@@ -53,9 +67,9 @@ const Time: React.FC = () => {
     maxValue: number,
     dispatchType: ETimeActionType
   ) => {
-    const { value } = event.target;
+    const value = getInputValue(event.target.value);
 
-    if (!/\d/.test(value)) return;
+    if (!isNumber(value)) return;
     if (parseInt(value) > maxValue) return;
     dispatchTime({
       type: dispatchType,
@@ -87,9 +101,6 @@ const Time: React.FC = () => {
         prevInput.focus();
         setTimeout(() => prevInput.select());
       }
-    } else if (!/\d/.test(event.key)) {
-      const currentInput = form.elements[dispatchType] as HTMLInputElement;
-      setTimeout(() => currentInput.select());
     }
   };
 
