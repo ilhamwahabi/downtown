@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import { ETimeActionType } from "../../../reducers/timeInput";
 import { useContextReducer } from "../../../context";
 import { useInterval } from "../../../hooks/setInterval";
+import { zoomOutKeyframes } from "../../../keyframes";
 
 const {
   CHANGE_HOUR_FIRST_DIGIT,
@@ -15,7 +16,13 @@ const {
   DECREASE_TIME
 } = ETimeActionType;
 
+const Tooltip: React.FC<{ text: string }> = ({ text }) => (
+  <div className={css(styles.tooltip)}>{text}</div>
+);
+
 const Time: React.FC = () => {
+  const [tooltipInputIndex, setTooltipInputIndex] = useState(-1);
+
   const {
     timeInput: [{ hour, minute, second }, dispatchTime],
     stage: [stage]
@@ -72,7 +79,12 @@ const Time: React.FC = () => {
     const value = getInputValue(event.target.value);
 
     if (!isNumber(value)) return;
-    if (parseInt(value) > maxValue) return;
+    if (parseInt(value) > maxValue) {
+      setTooltipInputIndex(dispatchType);
+      return;
+    }
+
+    setTooltipInputIndex(-1);
     dispatchTime({
       type: dispatchType,
       payload: value
@@ -111,16 +123,22 @@ const Time: React.FC = () => {
     dispatchType: ETimeActionType,
     maxValue: number
   ) => (
-    <input
-      className={css(styles.input)}
-      type="text"
-      onFocus={actionSelectField}
-      onInput={event => actionFocusToNextInput(event, dispatchType, maxValue)}
-      onChange={event => actionChangeValue(event, maxValue, dispatchType)}
-      onKeyDown={event => actionCheckPressedKey(event, dispatchType)}
-      value={initValue}
-      disabled={stage === "counting"}
-    />
+    <span className={css(styles.container)}>
+      {tooltipInputIndex === dispatchType && (
+        <Tooltip text={`value can't more than ${maxValue}`} />
+      )}
+      <input
+        className={css(styles.input)}
+        type="text"
+        onFocus={actionSelectField}
+        onInput={event => actionFocusToNextInput(event, dispatchType, maxValue)}
+        onChange={event => actionChangeValue(event, maxValue, dispatchType)}
+        onKeyDown={event => actionCheckPressedKey(event, dispatchType)}
+        value={initValue}
+        disabled={stage === "counting"}
+        onBlur={() => setTooltipInputIndex(-1)}
+      />
+    </span>
   );
 
   const renderHourInput = () => (
@@ -186,6 +204,11 @@ const styles = StyleSheet.create({
       width: 65
     }
   },
+  container: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center"
+  },
   input: {
     height: 150,
     width: 100,
@@ -230,6 +253,25 @@ const styles = StyleSheet.create({
     "@media (max-width: 320px)": {
       width: 25,
       fontSize: 45
+    }
+  },
+  tooltip: {
+    backgroundColor: "var(--quartenary)",
+    fontSize: 18,
+    color: "var(--secondary)",
+    top: -60,
+    position: "absolute",
+    width: "max-content",
+    padding: "5px 10px",
+    borderRadius: 5,
+    transform: "scale(0)",
+    animationName: [zoomOutKeyframes],
+    animationDuration: ".2s",
+    animationFillMode: "forwards",
+
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      top: -50,
+      fontSize: 12
     }
   }
 });
