@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     animationName: [toBackgroundSecondaryKeyframes],
     animationDuration: ".5s",
     animationTimingFunction: "ease-out",
-    animationDelay: ".5s",
     animationFillMode: "forwards"
   }
 });

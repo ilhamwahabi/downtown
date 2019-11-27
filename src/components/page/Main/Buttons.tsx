@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import { useContextReducer } from "../../../context";
 import { EStageActionType } from "../../../reducers/stage";
+import { slideDown } from "../../../keyframes";
 
 const Buttons: React.FC = () => {
   const {
@@ -10,8 +11,13 @@ const Buttons: React.FC = () => {
     timeInput: [{ hour, minute, second }]
   } = useContextReducer();
 
+  const [showWarning, setShowWarning] = useState(false);
+
   const actionStageToCount = () => {
-    if (hour === "00" && minute === "00" && second === "00") return;
+    if (hour === "00" && minute === "00" && second === "00") {
+      setShowWarning(true);
+      return;
+    }
     dispatchStage({ type: EStageActionType.COUNT });
   };
 
@@ -34,13 +40,18 @@ const Buttons: React.FC = () => {
   );
 
   const renderStartButton = () => (
-    <button
-      className={css(styles.button)}
-      onClick={actionStageToCount}
-      disabled={hour === "00" && minute === "00" && second === "00"}
-    >
-      START
-    </button>
+    <div className={css(styles.startButtonContainer)}>
+      <button
+        className={css(styles.button)}
+        onClick={actionStageToCount}
+        onBlur={() => setShowWarning(false)}
+      >
+        START
+      </button>
+      {showWarning && (
+        <p className={css(styles.warning)}>time can't be zero to start</p>
+      )}
+    </div>
   );
 
   return (
@@ -107,6 +118,25 @@ const styles = StyleSheet.create({
       width: 100,
       fontSize: 16,
       marginTop: 50
+    }
+  },
+  startButtonContainer: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "center"
+  },
+  warning: {
+    position: "absolute",
+    width: "max-content",
+    color: "var(--quartenary)",
+    top: 135,
+    animationName: [slideDown],
+    animationDuration: ".5s",
+    animationTimingFunction: "ease-out-in",
+
+    "@media (min-width: 320px) and (max-width: 480px)": {
+      top: 100,
+      fontSize: 12
     }
   }
 });
