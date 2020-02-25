@@ -97,10 +97,25 @@ const Time: React.FC = () => {
   ) => {
     const target = event.target as EventTarget & HTMLInputElement;
     const form = target.form as HTMLFormElement;
+    const value = parseInt(getInputValue(event.currentTarget.value));
 
     if (event.key === "Enter") {
       const selection = window.getSelection();
       if (selection) selection.removeAllRanges();
+    } else if (event.key === "ArrowUp") {
+      let nextValue = value === 9 ? 0 : value + 1;
+
+      dispatchTime({
+        type: dispatchType,
+        payload: nextValue.toString()
+      });
+    } else if (event.key === "ArrowDown") {
+      let nextValue = value === 0 ? 9 : value - 1;
+
+      dispatchTime({
+        type: dispatchType,
+        payload: nextValue.toString()
+      });
     } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       const nextInput = form.elements[dispatchType + 1] as
         | HTMLInputElement
