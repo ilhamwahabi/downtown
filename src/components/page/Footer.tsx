@@ -4,6 +4,8 @@ import { StyleSheet, css } from "aphrodite";
 import { ReactComponent as Copyright } from "../../svg/copyright.svg";
 
 export default () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className={css(styles.footer)}>
       <a
@@ -14,7 +16,7 @@ export default () => {
       >
         <span>Downtown</span>
         <Copyright className={css(styles.copyrightSvgIcon)} />
-        <span>2019 Ilham Wahabi</span>
+        <span>{currentYear} Ilham Wahabi</span>
       </a>
     </footer>
   );
