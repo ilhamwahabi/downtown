@@ -113,6 +113,13 @@ const styles = StyleSheet.create({
       cursor: "not-allowed"
     },
 
+    "@media(min-width: 1281px)": {
+      height: 55,
+      width: 131.25,
+      fontSize: 22,
+      marginTop: 85
+    },
+
     "@media (min-width: 320px) and (max-width: 480px)": {
       height: 40,
       width: 100,
@@ -133,6 +140,11 @@ const styles = StyleSheet.create({
     animationName: [slideDown],
     animationDuration: ".5s",
     animationTimingFunction: "ease-out-in",
+
+    "@media(min-width: 1281px)": {
+      top: 150,
+      fontSize: 16
+    },
 
     "@media (min-width: 320px) and (max-width: 480px)": {
       top: 100,

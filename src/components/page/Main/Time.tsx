@@ -209,6 +209,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: 225,
 
+    "@media(min-width: 1281px)": {
+      width: 350
+    },
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 175
     },
@@ -255,6 +258,11 @@ const styles = StyleSheet.create({
       backgroundColor: "transparent"
     },
 
+    "@media(min-width: 1281px)": {
+      width: 150,
+      height: 200,
+      fontSize: 225
+    },
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 75,
       fontSize: 125
