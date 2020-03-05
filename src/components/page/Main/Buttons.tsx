@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
 
     "@media(min-width: 1281px)": {
-      height: 55,
+      height: 52.5,
       width: 131.25,
       fontSize: 22,
       marginTop: 85
