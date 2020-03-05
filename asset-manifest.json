@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/downtown/static/css/main.0c973ec9.chunk.css",
-    "main.js": "/downtown/static/js/main.902c779f.chunk.js",
-    "main.js.map": "/downtown/static/js/main.902c779f.chunk.js.map",
+    "main.js": "/downtown/static/js/main.370f15d4.chunk.js",
+    "main.js.map": "/downtown/static/js/main.370f15d4.chunk.js.map",
     "runtime-main.js": "/downtown/static/js/runtime-main.3b0d1036.js",
     "runtime-main.js.map": "/downtown/static/js/runtime-main.3b0d1036.js.map",
     "static/js/2.e11330a1.chunk.js": "/downtown/static/js/2.e11330a1.chunk.js",
     "static/js/2.e11330a1.chunk.js.map": "/downtown/static/js/2.e11330a1.chunk.js.map",
     "index.html": "/downtown/index.html",
-    "precache-manifest.61354d13d3cc22320d065fe5fc5b476c.js": "/downtown/precache-manifest.61354d13d3cc22320d065fe5fc5b476c.js",
+    "precache-manifest.d618cf651af53e2eb1f817fcdbc23db7.js": "/downtown/precache-manifest.d618cf651af53e2eb1f817fcdbc23db7.js",
     "service-worker.js": "/downtown/service-worker.js",
     "static/css/main.0c973ec9.chunk.css.map": "/downtown/static/css/main.0c973ec9.chunk.css.map",
     "static/js/2.e11330a1.chunk.js.LICENSE.txt": "/downtown/static/js/2.e11330a1.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.3b0d1036.js",
     "static/js/2.e11330a1.chunk.js",
     "static/css/main.0c973ec9.chunk.css",
-    "static/js/main.902c779f.chunk.js"
+    "static/js/main.370f15d4.chunk.js"
   ]
 }
