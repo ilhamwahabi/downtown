@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     fontSize: 14,
     color: "var(--tertiary)",
-    fontWeight: "lighter"
+    fontWeight: "lighter",
+
+    "@media (max-width: 767px)": {
+      fontSize: 10
+    }
   },
   copyrightSvgIcon: {
     width: 14,
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
     fill: "var(--tertiary)",
     margin: "0 5px",
     paddingBottom: 1,
-    fontWeight: "lighter"
+    fontWeight: "lighter",
+
+    "@media (max-width: 767px)": {
+      width: 12,
+      height: 12
+    }
   }
 });
