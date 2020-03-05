@@ -199,6 +199,10 @@ const styles = StyleSheet.create({
     color: "var(--tertiary)",
     margin: "0 15px",
 
+    "@media (min-width: 481px) and (max-width: 767px)": {
+      fontSize: 60,
+      margin: "0 9px"
+    },
     "@media (min-width: 320px) and (max-width: 480px)": {
       fontSize: 50,
       margin: "0 7.5px"
@@ -214,6 +218,9 @@ const styles = StyleSheet.create({
     },
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 175
+    },
+    "@media (min-width: 481px) and (max-width: 767px)": {
+      width: 120
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       width: 75
@@ -266,6 +273,11 @@ const styles = StyleSheet.create({
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 75,
       fontSize: 125
+    },
+    "@media(min-width: 481px) and (max-width: 767px)": {
+      width: 50,
+      height: 85,
+      fontSize: 90
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       width: 30,
