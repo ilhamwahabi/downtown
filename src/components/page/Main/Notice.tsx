@@ -64,6 +64,10 @@ const styles = StyleSheet.create({
       fontSize: 144,
       margin: "0 25px"
     },
+    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
+      fontSize: 120,
+      margin: "0 15px"
+    },
     "@media (min-width: 320px) and (max-width: 480px)": {
       fontSize: 75,
       margin: "0 15px"
