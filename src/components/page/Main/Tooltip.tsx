@@ -22,6 +22,10 @@ const styles = StyleSheet.create({
     animationDuration: ".2s",
     animationFillMode: "forwards",
 
+    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
+      top: -35,
+      fontSize: 10
+    },
     "@media (min-width: 320px) and (max-width: 480px)": {
       top: -50,
       fontSize: 12
