@@ -4,7 +4,7 @@ import { StyleSheet, css } from "aphrodite";
 import { ETimeActionType } from "../../../reducers/timeInput";
 import { useStore } from "../../../context";
 import { useInterval } from "../../../hooks/setInterval";
-import { zoomOutKeyframes } from "../../../keyframes";
+import { Tooltip } from "./Tooltip";
 
 const {
   CHANGE_HOUR_FIRST_DIGIT,
@@ -15,10 +15,6 @@ const {
   CHANGE_SECOND_SECOND_DIGIT,
   DECREASE_TIME
 } = ETimeActionType;
-
-const Tooltip: React.FC<{ text: string }> = ({ text }) => (
-  <div className={css(styles.tooltip)}>{text}</div>
-);
 
 const Time: React.FC = () => {
   const [tooltipInputIndex, setTooltipInputIndex] = useState(-1);
@@ -286,25 +282,6 @@ const styles = StyleSheet.create({
     "@media (max-width: 320px)": {
       width: 25,
       fontSize: 45
-    }
-  },
-  tooltip: {
-    backgroundColor: "var(--quartenary)",
-    fontSize: 18,
-    color: "var(--secondary)",
-    top: -60,
-    position: "absolute",
-    width: "max-content",
-    padding: "5px 10px",
-    borderRadius: 5,
-    transform: "scale(0)",
-    animationName: [zoomOutKeyframes],
-    animationDuration: ".2s",
-    animationFillMode: "forwards",
-
-    "@media (min-width: 320px) and (max-width: 480px)": {
-      top: -50,
-      fontSize: 12
     }
   }
 });
