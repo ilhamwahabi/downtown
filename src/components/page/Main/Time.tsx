@@ -89,7 +89,8 @@ const Time: React.FC = () => {
 
   const actionCheckPressedKey = (
     event: React.KeyboardEvent<HTMLInputElement>,
-    dispatchType: ETimeActionType
+    dispatchType: ETimeActionType,
+    maxValue: number
   ) => {
     const target = event.target as EventTarget & HTMLInputElement;
     const form = target.form as HTMLFormElement;
@@ -99,14 +100,14 @@ const Time: React.FC = () => {
       const selection = window.getSelection();
       if (selection) selection.removeAllRanges();
     } else if (event.key === "ArrowUp") {
-      let nextValue = value === 9 ? 0 : value + 1;
+      let nextValue = value === maxValue ? 0 : value + 1;
 
       dispatchTime({
         type: dispatchType,
         payload: nextValue.toString()
       });
     } else if (event.key === "ArrowDown") {
-      let nextValue = value === 0 ? 9 : value - 1;
+      let nextValue = value === 0 ? maxValue : value - 1;
 
       dispatchTime({
         type: dispatchType,
@@ -144,7 +145,9 @@ const Time: React.FC = () => {
         onFocus={actionSelectField}
         onInput={event => actionFocusToNextInput(event, dispatchType, maxValue)}
         onChange={event => actionChangeValue(event, maxValue, dispatchType)}
-        onKeyDown={event => actionCheckPressedKey(event, dispatchType)}
+        onKeyDown={event =>
+          actionCheckPressedKey(event, dispatchType, maxValue)
+        }
         value={initValue}
         disabled={stage === "counting"}
         onBlur={() => setTooltipInputIndex(-1)}
