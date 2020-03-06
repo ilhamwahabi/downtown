@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { useContextReducer } from "../../../context";
+import { useStore } from "../../../context";
 import { EStageActionType } from "../../../reducers";
 import {
   zoomOutKeyframes,
@@ -12,7 +12,7 @@ const Notice = () => {
   const {
     timeInput: [{ hour, minute, second }],
     stage: [stage, dispatchStage]
-  } = useContextReducer();
+  } = useStore();
 
   if (
     !(

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { useContextReducer } from "../../../context";
+import { useStore } from "../../../context";
 import { EStageActionType } from "../../../reducers/stage";
 import { slideDown } from "../../../keyframes";
 
@@ -9,16 +9,16 @@ const Buttons: React.FC = () => {
   const {
     stage: [stage, dispatchStage],
     timeInput: [{ hour, minute, second }]
-  } = useContextReducer();
+  } = useStore();
 
   const [showWarning, setShowWarning] = useState(false);
 
   const actionStageToCount = () => {
     if (hour === "00" && minute === "00" && second === "00") {
       setShowWarning(true);
-      return;
+    } else {
+      dispatchStage({ type: EStageActionType.COUNT });
     }
-    dispatchStage({ type: EStageActionType.COUNT });
   };
 
   const renderPauseButton = () => (
@@ -94,21 +94,18 @@ const styles = StyleSheet.create({
       backgroundImage:
         "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
-
     ":active": {
       color: "var(--secondary)",
       backgroundPosition: "0 100%",
       backgroundImage:
         "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
-
     ":focus": {
       color: "var(--secondary)",
       backgroundPosition: "0 100%",
       backgroundImage:
         "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
     },
-
     ":disabled": {
       cursor: "not-allowed"
     },

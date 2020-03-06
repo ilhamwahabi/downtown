@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import { ETimeActionType } from "../../../reducers/timeInput";
-import { useContextReducer } from "../../../context";
+import { useStore } from "../../../context";
 import { useInterval } from "../../../hooks/setInterval";
 import { zoomOutKeyframes } from "../../../keyframes";
 
@@ -26,7 +26,7 @@ const Time: React.FC = () => {
   const {
     timeInput: [{ hour, minute, second }, dispatchTime],
     stage: [stage]
-  } = useContextReducer();
+  } = useStore();
 
   useInterval(
     () => dispatchTime({ type: DECREASE_TIME }),
@@ -255,12 +255,10 @@ const styles = StyleSheet.create({
     ":disabled": {
       borderColor: "var(--secondary)"
     },
-
     ":focus": {
       backgroundSize: "100% 100%",
       color: "white"
     },
-
     "::selection": {
       backgroundColor: "transparent"
     },

@@ -6,12 +6,11 @@ import Buttons from "./Buttons";
 import Notice from "./Notice";
 
 const InputTime = () => {
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-  };
-
   return (
-    <form onSubmit={handleFormSubmit} className={css(styles.container)}>
+    <form
+      onSubmit={event => event.preventDefault()}
+      className={css(styles.container)}
+    >
       <Time />
       <Buttons />
       <Notice />

@@ -1,6 +1,6 @@
 # Downtown
 
-## What is this?
+## About
 
 App to display remaining time. Just like another timer.
 

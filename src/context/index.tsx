@@ -28,4 +28,4 @@ export const ContextProvider: FC = ({ children }) => {
   return <Context.Provider value={contextValue}>{children}</Context.Provider>;
 };
 
-export const useContextReducer = () => useContext(Context);
+export const useStore = () => useContext(Context);
