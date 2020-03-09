@@ -20,10 +20,3 @@ Built with:
 4. Deploy it `yarn deploy`
 
 Or try directly here: https://iwgx.github.io/downtown/
-
-## Todo:
-
-1. Add critical mode, for example counter color became color when near the end
-2. Another counter form, maybe bar & pie?
-3. Settings button for above
-4. Fix few bugs (none for now :D)
