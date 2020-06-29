@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { useStore } from "../../../context";
-import { EStageActionType } from "../../../reducers/stage";
-import { slideDown } from "../../../keyframes";
+import { useStore } from "../context";
+import { EStageActionType } from "../reducers/stage";
+import { slideDown } from "../keyframes";
 
 const Buttons: React.FC = () => {
   const {
     stage: [stage, dispatchStage],
-    timeInput: [{ hour, minute, second }]
+    timeInput: [{ hour, minute, second }],
   } = useStore();
 
   const [showWarning, setShowWarning] = useState(false);
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     width: "50vw",
     margin: "0 auto",
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-around",
   },
   button: {
     backgroundColor: "transparent",
@@ -86,53 +86,53 @@ const styles = StyleSheet.create({
     transition: "color .25s, background-position .25s",
     backgroundSize: "200% 200%",
     backgroundImage:
-      "linear-gradient(to top, var(--tertiary) 50%, transparent 50%)",
+      "linear-gradient(to top, var(--tertiary) 48%, transparent 50%)",
 
     ":hover": {
       color: "var(--secondary)",
       backgroundPosition: "0 100%",
       backgroundImage:
-        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
+        "linear-gradient(to top, var(--tertiary) 55%, transparent 50%)",
     },
     ":active": {
       color: "var(--secondary)",
       backgroundPosition: "0 100%",
       backgroundImage:
-        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
+        "linear-gradient(to top, var(--tertiary) 55%, transparent 50%)",
     },
     ":focus": {
       color: "var(--secondary)",
       backgroundPosition: "0 100%",
       backgroundImage:
-        "linear-gradient(to top, var(--tertiary) 51%, transparent 50%)"
+        "linear-gradient(to top, var(--tertiary) 55%, transparent 50%)",
     },
     ":disabled": {
-      cursor: "not-allowed"
+      cursor: "not-allowed",
     },
 
     "@media(min-width: 1281px)": {
       height: 52.5,
       width: 131.25,
       fontSize: 22,
-      marginTop: 85
+      marginTop: 85,
     },
     "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
       height: 37.5,
       width: 82.5,
       fontSize: 14,
-      marginTop: 30
+      marginTop: 30,
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       height: 32.5,
       width: 75,
       fontSize: 12,
-      marginTop: 25
-    }
+      marginTop: 25,
+    },
   },
   startButtonContainer: {
     position: "relative",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   warning: {
     position: "absolute",
@@ -145,17 +145,17 @@ const styles = StyleSheet.create({
 
     "@media(min-width: 1281px)": {
       top: 150,
-      fontSize: 16
+      fontSize: 16,
     },
     "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
       top: 60,
-      fontSize: 12
+      fontSize: 12,
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       top: 60,
-      fontSize: 12
-    }
-  }
+      fontSize: 12,
+    },
+  },
 });
 
 export default Buttons;

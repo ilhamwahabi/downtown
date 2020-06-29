@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { ReactComponent as Copyright } from "../../svg/copyright.svg";
+import { ReactComponent as Copyright } from "../svg/copyright.svg";
 
 export default () => {
   const currentYear = new Date().getFullYear();
@@ -25,7 +25,7 @@ export default () => {
 const styles = StyleSheet.create({
   footer: {
     textAlign: "center",
-    padding: "24px 50px"
+    padding: "24px 50px",
   },
   link: {
     display: "flex",
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     fontWeight: "lighter",
 
     "@media (max-width: 767px)": {
-      fontSize: 10
-    }
+      fontSize: 10,
+    },
   },
   copyrightSvgIcon: {
     width: 14,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 
     "@media (max-width: 767px)": {
       width: 12,
-      height: 12
-    }
-  }
+      height: 12,
+    },
+  },
 });

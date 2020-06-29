@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { useStore } from "../../../context";
-import { EStageActionType } from "../../../reducers";
+import { useStore } from "../context";
+import { EStageActionType } from "../reducers";
 import {
   zoomOutKeyframes,
   toBackgroundSecondaryKeyframes
-} from "../../../keyframes";
+} from "../keyframes";
 
 const Notice = () => {
   const {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import { ETimeActionType } from "../../../reducers/timeInput";
-import { useStore } from "../../../context";
-import { useInterval } from "../../../hooks/setInterval";
+import { ETimeActionType } from "../reducers/timeInput";
+import { useStore } from "../context";
+import { useInterval } from "../hooks/setInterval";
 import { Tooltip } from "./Tooltip";
 
 const {
@@ -13,7 +13,7 @@ const {
   CHANGE_MINUTE_SECOND_DIGIT,
   CHANGE_SECOND_FIRST_DIGIT,
   CHANGE_SECOND_SECOND_DIGIT,
-  DECREASE_TIME
+  DECREASE_TIME,
 } = ETimeActionType;
 
 const Time: React.FC = () => {
@@ -21,7 +21,7 @@ const Time: React.FC = () => {
 
   const {
     timeInput: [{ hour, minute, second }, dispatchTime],
-    stage: [stage]
+    stage: [stage],
   } = useStore();
 
   useInterval(
@@ -83,7 +83,7 @@ const Time: React.FC = () => {
     setTooltipInputIndex(-1);
     dispatchTime({
       type: dispatchType,
-      payload: value
+      payload: value,
     });
   };
 
@@ -104,14 +104,14 @@ const Time: React.FC = () => {
 
       dispatchTime({
         type: dispatchType,
-        payload: nextValue.toString()
+        payload: nextValue.toString(),
       });
     } else if (event.key === "ArrowDown") {
       let nextValue = value === 0 ? maxValue : value - 1;
 
       dispatchTime({
         type: dispatchType,
-        payload: nextValue.toString()
+        payload: nextValue.toString(),
       });
     } else if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       const nextInput = form.elements[dispatchType + 1] as
@@ -143,9 +143,11 @@ const Time: React.FC = () => {
         className={css(styles.input)}
         type="text"
         onFocus={actionSelectField}
-        onInput={event => actionFocusToNextInput(event, dispatchType, maxValue)}
-        onChange={event => actionChangeValue(event, maxValue, dispatchType)}
-        onKeyDown={event =>
+        onInput={(event) =>
+          actionFocusToNextInput(event, dispatchType, maxValue)
+        }
+        onChange={(event) => actionChangeValue(event, maxValue, dispatchType)}
+        onKeyDown={(event) =>
           actionCheckPressedKey(event, dispatchType, maxValue)
         }
         value={initValue}
@@ -191,7 +193,7 @@ const styles = StyleSheet.create({
   inputsContainer: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   separator: {
     fontSize: 100,
@@ -200,12 +202,12 @@ const styles = StyleSheet.create({
 
     "@media (min-width: 481px) and (max-width: 767px)": {
       fontSize: 60,
-      margin: "0 9px"
+      margin: "0 9px",
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       fontSize: 50,
-      margin: "0 7.5px"
-    }
+      margin: "0 7.5px",
+    },
   },
   inputContainer: {
     display: "flex",
@@ -213,25 +215,25 @@ const styles = StyleSheet.create({
     width: 225,
 
     "@media(min-width: 1281px)": {
-      width: 350
+      width: 350,
     },
     "@media (min-width: 768px) and (max-width: 1024px)": {
-      width: 175
+      width: 175,
     },
     "@media (min-width: 481px) and (max-width: 767px)": {
-      width: 120
+      width: 120,
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
-      width: 75
+      width: 75,
     },
     "@media (max-width: 320px)": {
-      width: 65
-    }
+      width: 65,
+    },
   },
   container: {
     position: "relative",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   input: {
     height: 150,
@@ -252,41 +254,41 @@ const styles = StyleSheet.create({
     caretColor: "transparent",
 
     ":disabled": {
-      borderColor: "var(--secondary)"
+      borderColor: "var(--secondary)",
     },
     ":focus": {
       backgroundSize: "100% 100%",
-      color: "white"
+      color: "white",
     },
     "::selection": {
-      backgroundColor: "transparent"
+      backgroundColor: "transparent",
     },
 
     "@media(min-width: 1281px)": {
       width: 150,
       height: 200,
-      fontSize: 225
+      fontSize: 225,
     },
     "@media (min-width: 768px) and (max-width: 1024px)": {
       width: 75,
-      fontSize: 125
+      fontSize: 125,
     },
     "@media(min-width: 481px) and (max-width: 767px)": {
       width: 50,
       height: 85,
-      fontSize: 90
+      fontSize: 90,
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       width: 30,
       height: 50,
       fontSize: 50,
-      borderWidth: 2.5
+      borderWidth: 2.5,
     },
     "@media (max-width: 320px)": {
       width: 25,
-      fontSize: 45
-    }
-  }
+      fontSize: 45,
+    },
+  },
 });
 
 export default Time;

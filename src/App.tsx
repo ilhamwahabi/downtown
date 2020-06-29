@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-import Main from "./page/Main";
-import Footer from "./page/Footer";
+import Main from "./components";
+import Footer from "./components/Footer";
 
-import { ContextProvider } from "../context";
+import { ContextProvider } from "./context";
 
 const App: React.FC = () => {
   return (
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: "auto",
     flexDirection: "column",
-    backgroundColor: "var(--secondary)"
-  }
+    backgroundColor: "var(--secondary)",
+  },
 });
 
 export default App;
