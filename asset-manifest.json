@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/downtown/static/css/main.4383b09d.chunk.css",
-    "main.js": "/downtown/static/js/main.868e50a5.chunk.js",
+    "main.js": "/downtown/static/js/main.2142898f.chunk.js",
     "runtime-main.js": "/downtown/static/js/runtime-main.3b0d1036.js",
     "static/js/2.e11330a1.chunk.js": "/downtown/static/js/2.e11330a1.chunk.js",
     "index.html": "/downtown/index.html",
-    "precache-manifest.e1f9837c5caa1b0095cb434067885505.js": "/downtown/precache-manifest.e1f9837c5caa1b0095cb434067885505.js",
+    "precache-manifest.16dd31f98cad292a43a76483583756d7.js": "/downtown/precache-manifest.16dd31f98cad292a43a76483583756d7.js",
     "service-worker.js": "/downtown/service-worker.js",
     "static/js/2.e11330a1.chunk.js.LICENSE.txt": "/downtown/static/js/2.e11330a1.chunk.js.LICENSE.txt",
     "static/media/copyright.0d29c5c5.svg": "/downtown/static/media/copyright.0d29c5c5.svg"
@@ -14,6 +14,6 @@
     "static/js/runtime-main.3b0d1036.js",
     "static/js/2.e11330a1.chunk.js",
     "static/css/main.4383b09d.chunk.css",
-    "static/js/main.868e50a5.chunk.js"
+    "static/js/main.2142898f.chunk.js"
   ]
 }
