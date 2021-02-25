@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@splitbee/web": "^0.2.4",
     "@types/aphrodite": "^2.0.0",
     "@types/jest": "26.0.20",
     "@types/node": "14.14.31",

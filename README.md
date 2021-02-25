@@ -11,6 +11,7 @@ Built with:
 - React + Typescript, i think this is my common stack now
 - Hooks for state management, i'm doing experiment with useContext + useReducer and it works well!
 - Aphrodite for styling, because in my previous internship (Dekoruma) I'm using react native and this library gave me same vibe
+- Splitbee for analytics
 
 ## Usage
 
