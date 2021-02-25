@@ -3,7 +3,7 @@ import { StyleSheet, css } from "aphrodite";
 
 import { ReactComponent as Copyright } from "../svg/copyright.svg";
 
-export default () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -56,3 +56,5 @@ const styles = StyleSheet.create({
     },
   },
 });
+
+export default Footer
