@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, css } from "aphrodite";
+import { StyleSheet, css } from "aphrodite/no-important";
 
 import { useStore } from "../context";
 import { EStageActionType } from "../reducers";
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
       fontSize: 144,
       margin: "0 25px"
     },
-    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
+    "@media (min-width: 481px) and (max-width: 767px)": {
       fontSize: 120,
       margin: "0 15px"
     },
