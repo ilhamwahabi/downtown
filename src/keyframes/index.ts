@@ -1,4 +1,10 @@
-export const zoomOutKeyframes = {
+import { CSSProperties } from "aphrodite";
+interface IKeyframe {
+  from: CSSProperties,
+  to: CSSProperties
+}
+
+export const zoomOutKeyframes: IKeyframe = {
   from: {
     transform: "scale(0)"
   },
@@ -7,7 +13,7 @@ export const zoomOutKeyframes = {
   }
 };
 
-export const toBackgroundSecondaryKeyframes = {
+export const toBackgroundSecondaryKeyframes: IKeyframe = {
   from: {
     backgroundColor: "transparent"
   },
@@ -16,7 +22,7 @@ export const toBackgroundSecondaryKeyframes = {
   }
 };
 
-export const slideDown = {
+export const slideDown: IKeyframe = {
   from: {
     transform: "translateY(-25px)",
     opacity: 0
