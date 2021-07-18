@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     cursor: "pointer",
     fontSize: 20,
     outline: "none",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     transition: "color .25s, background-position .25s",
     backgroundSize: "200% 200%",
     backgroundImage:
@@ -116,12 +119,13 @@ const styles = StyleSheet.create({
       fontSize: 22,
       marginTop: 85,
     },
-    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
-      height: 37.5,
-      width: 82.5,
-      fontSize: 14,
-      marginTop: 30,
-    },
+    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)":
+      {
+        height: 37.5,
+        width: 82.5,
+        fontSize: 14,
+        marginTop: 30,
+      },
     "@media (min-width: 320px) and (max-width: 480px)": {
       height: 32.5,
       width: 75,
@@ -147,10 +151,11 @@ const styles = StyleSheet.create({
       top: 150,
       fontSize: 16,
     },
-    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)": {
-      top: 60,
-      fontSize: 12,
-    },
+    "@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape)":
+      {
+        top: 60,
+        fontSize: 12,
+      },
     "@media (min-width: 320px) and (max-width: 480px)": {
       top: 60,
       fontSize: 12,
