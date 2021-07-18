@@ -2,16 +2,13 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite/no-important";
 
 import { useStore } from "../context";
-import { EStageActionType } from "../reducers";
-import {
-  zoomOutKeyframes,
-  toBackgroundSecondaryKeyframes
-} from "../keyframes";
+import { EStageActionType } from "../reducers/stage";
+import { zoomOutKeyframes, toBackgroundSecondaryKeyframes } from "../keyframes";
 
 const Notice = () => {
   const {
     timeInput: [{ hour, minute, second }],
-    stage: [stage, dispatchStage]
+    stage: [stage, dispatchStage],
   } = useStore();
 
   if (
@@ -46,7 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     zIndex: 2,
-    cursor: "default"
+    cursor: "default",
   },
   text: {
     fontFamily: "Oswald",
@@ -62,20 +59,20 @@ const styles = StyleSheet.create({
 
     "@media (min-width: 768px) and (max-width: 1024px)": {
       fontSize: 144,
-      margin: "0 25px"
+      margin: "0 25px",
     },
     "@media (min-width: 481px) and (max-width: 767px)": {
       fontSize: 120,
-      margin: "0 15px"
+      margin: "0 15px",
     },
     "@media (min-width: 320px) and (max-width: 480px)": {
       fontSize: 75,
-      margin: "0 15px"
+      margin: "0 15px",
     },
     "@media (max-width: 320px)": {
       fontSize: 60,
-      margin: "0 15px"
-    }
+      margin: "0 15px",
+    },
   },
   backdrop: {
     position: "fixed",
@@ -88,8 +85,8 @@ const styles = StyleSheet.create({
     animationName: [toBackgroundSecondaryKeyframes],
     animationDuration: ".5s",
     animationTimingFunction: "ease-out",
-    animationFillMode: "forwards"
-  }
+    animationFillMode: "forwards",
+  },
 });
 
 export default Notice;

@@ -8,7 +8,7 @@ import Notice from "./Notice";
 const InputTime = () => {
   return (
     <form
-      onSubmit={event => event.preventDefault()}
+      onSubmit={(event) => event.preventDefault()}
       className={css(styles.container)}
     >
       <Time />
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 export default InputTime;

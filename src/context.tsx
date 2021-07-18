@@ -4,10 +4,12 @@ import {
   useTimeInputReducer,
   ITimeState,
   ITimeAction,
+} from "./reducers/timeInput";
+import {
   useStageReducer,
   TStageState,
-  IStageAction
-} from "../reducers";
+  IStageAction,
+} from './reducers/stage'
 
 interface IContextProps {
   timeInput: [ITimeState, React.Dispatch<ITimeAction>];

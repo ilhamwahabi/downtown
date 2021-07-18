@@ -1,4 +1,5 @@
 import { CSSProperties } from "aphrodite";
+
 interface IKeyframe {
   from: CSSProperties,
   to: CSSProperties

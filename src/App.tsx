@@ -3,7 +3,6 @@ import { StyleSheet, css } from "aphrodite";
 
 import Main from "./components";
 import Footer from "./components/Footer";
-
 import { ContextProvider } from "./context";
 
 const App: React.FC = () => {
