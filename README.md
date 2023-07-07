@@ -19,5 +19,3 @@ Built with:
 2. Install dependencies `yarn`
 3. Run aplication `yarn start`
 4. Deploy it `yarn deploy`
-
-Or try directly here: https://downtown.iwgx.io
