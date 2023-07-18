@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={css(styles.footer)}>
       <a
-        href="https://github.com/iwgx/downtown"
+        href="https://github.com/ilhamwahabi/downtown"
         className={css(styles.link)}
         target="_blank"
         rel="noopener noreferrer"
